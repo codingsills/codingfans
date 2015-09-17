@@ -5,11 +5,12 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.List;
 
-import org.codingfans.modules.orm.PropertyFilter;
-import org.codingfans.modules.orm.PropertyFilter.MatchType;
 import org.joda.time.DateTime;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
+
+import com.codingfans.modules.orm.PropertyFilter;
+import com.codingfans.modules.orm.PropertyFilter.MatchType;
 
 /**
  * PropertyFilter的测试类

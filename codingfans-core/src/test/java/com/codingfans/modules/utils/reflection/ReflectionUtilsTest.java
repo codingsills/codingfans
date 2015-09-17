@@ -4,8 +4,9 @@ import static org.junit.Assert.*;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.codingfans.modules.utils.reflection.ReflectionUtils;
 import org.junit.Test;
+
+import com.codingfans.modules.utils.reflection.ReflectionUtils;
 
 public class ReflectionUtilsTest {
 

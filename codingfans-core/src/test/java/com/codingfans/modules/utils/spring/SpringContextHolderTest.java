@@ -2,11 +2,12 @@ package com.codingfans.modules.utils.spring;
 
 import static org.junit.Assert.*;
 
-import org.codingfans.modules.utils.reflection.ReflectionUtils;
-import org.codingfans.modules.utils.spring.SpringContextHolder;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.codingfans.modules.utils.reflection.ReflectionUtils;
+import com.codingfans.modules.utils.spring.SpringContextHolder;
 
 public class SpringContextHolderTest {
 

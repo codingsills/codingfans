@@ -5,8 +5,9 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.codingfans.modules.utils.PropertiesUtils;
 import org.junit.Test;
+
+import com.codingfans.modules.utils.PropertiesUtils;
 
 public class PropertiesUtilsTest {
 

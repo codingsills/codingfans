@@ -9,7 +9,6 @@ import mockit.Mock;
 import mockit.MockClass;
 import mockit.Mockit;
 
-import org.codingfans.modules.test.utils.SeleniumUtils;
 import org.junit.Test;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +17,8 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import com.codingfans.modules.test.utils.SeleniumUtils;
 
 public class SeleniumUtilsTest {
 

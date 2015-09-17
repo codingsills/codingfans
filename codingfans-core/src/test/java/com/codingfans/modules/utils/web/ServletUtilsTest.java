@@ -5,10 +5,11 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.Map;
 
-import org.codingfans.modules.utils.web.ServletUtils;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+
+import com.codingfans.modules.utils.web.ServletUtils;
 
 public class ServletUtilsTest {
 

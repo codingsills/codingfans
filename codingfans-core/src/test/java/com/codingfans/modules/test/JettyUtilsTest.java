@@ -2,10 +2,11 @@ package com.codingfans.modules.test;
 
 import static org.junit.Assert.*;
 
-import org.codingfans.modules.test.utils.JettyUtils;
 import org.junit.Test;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.webapp.WebAppContext;
+
+import com.codingfans.modules.test.utils.JettyUtils;
 
 public class JettyUtilsTest {
 

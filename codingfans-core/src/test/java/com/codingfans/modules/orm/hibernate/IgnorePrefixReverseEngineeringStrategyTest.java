@@ -2,10 +2,11 @@ package com.codingfans.modules.orm.hibernate;
 
 import static org.junit.Assert.*;
 
-import org.codingfans.modules.orm.hibernate.IgnorePrefixReverseEngineeringStrategy;
-import org.codingfans.modules.utils.reflection.ReflectionUtils;
 import org.hibernate.cfg.reveng.ReverseEngineeringStrategy;
 import org.junit.Test;
+
+import com.codingfans.modules.orm.hibernate.IgnorePrefixReverseEngineeringStrategy;
+import com.codingfans.modules.utils.reflection.ReflectionUtils;
 
 public class IgnorePrefixReverseEngineeringStrategyTest {
 

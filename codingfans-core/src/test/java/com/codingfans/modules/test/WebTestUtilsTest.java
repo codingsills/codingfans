@@ -3,7 +3,6 @@ package com.codingfans.modules.test;
 import static org.junit.Assert.*;
 
 import org.apache.struts2.ServletActionContext;
-import org.codingfans.modules.test.utils.WebTestUtils;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,6 +10,8 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.codingfans.modules.test.utils.WebTestUtils;
 
 public class WebTestUtilsTest {
 

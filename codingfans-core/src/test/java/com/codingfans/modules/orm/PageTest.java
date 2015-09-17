@@ -2,9 +2,10 @@ package com.codingfans.modules.orm;
 
 import static org.junit.Assert.*;
 
-import org.codingfans.modules.orm.Page;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.codingfans.modules.orm.Page;
 
 public class PageTest {
 	private Page<Object> page;

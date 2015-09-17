@@ -4,11 +4,12 @@ import static org.junit.Assert.*;
 
 import javax.sql.DataSource;
 
-import org.codingfans.modules.test.spring.SpringTxTestCase;
-import org.codingfans.modules.test.utils.DbUnitUtils;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.test.context.ContextConfiguration;
+
+import com.codingfans.modules.test.spring.SpringTxTestCase;
+import com.codingfans.modules.test.utils.DbUnitUtils;
 
 @ContextConfiguration(locations = { "/applicationContext-core-test.xml" })
 public class DbUnitUtilsTest extends SpringTxTestCase {

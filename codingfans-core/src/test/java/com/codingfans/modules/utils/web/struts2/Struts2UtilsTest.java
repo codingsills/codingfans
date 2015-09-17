@@ -9,11 +9,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.codingfans.modules.test.utils.WebTestUtils;
-import org.codingfans.modules.utils.web.struts2.Struts2Utils;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import com.codingfans.modules.test.utils.WebTestUtils;
+import com.codingfans.modules.utils.web.struts2.Struts2Utils;
 import com.google.common.collect.Lists;
 
 public class Struts2UtilsTest {

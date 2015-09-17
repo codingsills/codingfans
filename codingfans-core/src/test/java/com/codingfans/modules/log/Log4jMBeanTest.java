@@ -4,8 +4,9 @@ import static org.junit.Assert.*;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.codingfans.modules.log.Log4jMBean;
 import org.junit.Test;
+
+import com.codingfans.modules.log.Log4jMBean;
 
 public class Log4jMBeanTest {
 

@@ -8,10 +8,6 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.codingfans.modules.orm.hibernate.SimpleHibernateDao;
-import org.codingfans.modules.test.spring.SpringTxTestCase;
-import org.codingfans.modules.test.utils.DbUnitUtils;
-import org.codingfans.modules.utils.reflection.ReflectionUtils;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
@@ -24,7 +20,11 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.codingfans.modules.orm.hibernate.SimpleHibernateDao;
 import com.codingfans.modules.orm.hibernate.data.User;
+import com.codingfans.modules.test.spring.SpringTxTestCase;
+import com.codingfans.modules.test.utils.DbUnitUtils;
+import com.codingfans.modules.utils.reflection.ReflectionUtils;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 

@@ -13,10 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.codingfans.modules.utils.reflection.ConvertUtils;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.codingfans.modules.utils.reflection.ConvertUtils;
 import com.google.common.collect.Lists;
 
 /**

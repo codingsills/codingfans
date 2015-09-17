@@ -4,13 +4,14 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.codingfans.modules.test.groups.Groups;
-import org.codingfans.modules.test.groups.GroupsTestRunner;
-import org.codingfans.modules.utils.reflection.ReflectionUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.model.InitializationError;
+
+import com.codingfans.modules.test.groups.Groups;
+import com.codingfans.modules.test.groups.GroupsTestRunner;
+import com.codingfans.modules.utils.reflection.ReflectionUtils;
 
 public class GroupsTestRunnerTest {
 

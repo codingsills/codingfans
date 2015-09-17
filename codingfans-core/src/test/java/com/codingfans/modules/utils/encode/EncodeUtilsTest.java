@@ -2,8 +2,9 @@ package com.codingfans.modules.utils.encode;
 
 import static org.junit.Assert.*;
 
-import org.codingfans.modules.utils.encode.EncodeUtils;
 import org.junit.Test;
+
+import com.codingfans.modules.utils.encode.EncodeUtils;
 
 public class EncodeUtilsTest {
 

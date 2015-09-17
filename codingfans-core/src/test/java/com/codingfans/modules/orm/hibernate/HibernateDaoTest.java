@@ -9,11 +9,6 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
-import org.codingfans.modules.orm.Page;
-import org.codingfans.modules.orm.PropertyFilter;
-import org.codingfans.modules.orm.hibernate.HibernateDao;
-import org.codingfans.modules.test.spring.SpringTxTestCase;
-import org.codingfans.modules.test.utils.DbUnitUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
@@ -23,7 +18,12 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.codingfans.modules.orm.Page;
+import com.codingfans.modules.orm.PropertyFilter;
+import com.codingfans.modules.orm.hibernate.HibernateDao;
 import com.codingfans.modules.orm.hibernate.data.User;
+import com.codingfans.modules.test.spring.SpringTxTestCase;
+import com.codingfans.modules.test.utils.DbUnitUtils;
 import com.google.common.collect.Lists;
 
 @ContextConfiguration(locations = { "/applicationContext-core-test.xml" })
