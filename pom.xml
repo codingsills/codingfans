@@ -3,4 +3,10 @@
   <groupId>codingfans</groupId>
   <artifactId>codingfans</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>codingfans-parent</module>
+  	<module>codingfans-core</module>
+  	<module>codingfans-demo</module>
+  </modules>
 </project>
