@@ -7,6 +7,6 @@
   <modules>
   	<module>codingfans-parent</module>
   	<module>codingfans-core</module>
-  	<module>codingfans-demo</module>
+  	<module>codingfans-ssm4</module>
   </modules>
 </project>
