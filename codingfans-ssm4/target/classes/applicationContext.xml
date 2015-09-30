@@ -2,24 +2,29 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" 
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd"
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+    	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+		
 		default-lazy-init="true">
 		
 	<description>Spring公共配置</description>		
 	
 	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-	<context:component-scan base-package="org.springside.examples.showcase">
+	<context:component-scan base-package="com.codingfans">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>		
-	
+
 	<!-- Mybatis配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -45,6 +50,82 @@
 		<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
 	</bean>
 	
-		
+	<!-- local development环境 -->
+	<beans profile="dev">
+		<context:property-placeholder ignore-resource-not-found="true"
+			 location="classpath*:/application.properties,
+			 		   classpath*:/application.dev.properties" />
+		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+			<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+			<property name="driverClassName" value="org.h2.Driver" />
+			<property name="url" value="jdbc:h2:file:~/.h2/quickstart;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"></property>
+			<property name="username" value="sa" />
+			<property name="password" value="" />
+			<!-- 配置初始化大小、最小、最大 -->
+		    <property name="initialSize" value="3" />
+		    <property name="minIdle" value="3" />
+		    <property name="maxActive" value="20" />
+		 
+		    <!-- 配置获取连接等待超时的时间 -->
+		    <property name="maxWait" value="60000" />
+		 
+		    <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+		 
+		    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		    <property name="minEvictableIdleTimeMillis" value="300000" />
+		 	<!-- 验证连接是否有效 -->
+		    <property name="validationQuery" value="SELECT 'x'" />
+		    <property name="testWhileIdle" value="true" />
+		    <property name="testOnBorrow" value="false" />
+		    <property name="testOnReturn" value="false" />
+		 
+		    <!-- 打开PSCache，并且指定每个连接上PSCache的大小（Oracle使用）
+		    <property name="poolPreparedStatements" value="true" />
+		    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" /> -->
+		 
+		    <!-- 配置监控统计拦截的filters -->
+		    <property name="filters" value="stat" />
+		</bean>
+	</beans>
+	
+	<!-- production 环境 -->
+	<beans profile="production">
+		<context:property-placeholder ignore-resource-not-found="true"
+			 location="classpath*:/application.properties,
+			 		   classpath*:/application.dev.properties" />
+		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+			<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<!-- 配置初始化大小、最小、最大 -->
+		    <property name="initialSize" value="3" />
+		    <property name="minIdle" value="3" />
+		    <property name="maxActive" value="20" />
+		 
+		    <!-- 配置获取连接等待超时的时间 -->
+		    <property name="maxWait" value="60000" />
+		 
+		    <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+		 
+		    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		    <property name="minEvictableIdleTimeMillis" value="300000" />
+		 	<!-- 验证连接是否有效 -->
+		    <property name="validationQuery" value="SELECT 'x'" />
+		    <property name="testWhileIdle" value="true" />
+		    <property name="testOnBorrow" value="false" />
+		    <property name="testOnReturn" value="false" />
+		 
+		    <!-- 打开PSCache，并且指定每个连接上PSCache的大小（Oracle使用）
+		    <property name="poolPreparedStatements" value="true" />
+		    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" /> -->
+		 
+		    <!-- 配置监控统计拦截的filters -->
+		    <property name="filters" value="stat" />
+		</bean>
+	</beans>		
 
 </beans>
