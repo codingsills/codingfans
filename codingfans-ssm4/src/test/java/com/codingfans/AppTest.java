@@ -1,4 +1,4 @@
-package org.codingfans;
+package com.codingfans;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
