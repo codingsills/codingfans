@@ -28,18 +28,21 @@
 	<!-- Mybatis配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<!-- 自动扫描entity目录, 省掉类别名的手工配置 -->
+		<property name="typeAliasesPackage" value="com.codingfans.entity"></property>
 		<!-- 显示指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml"></property>
-	</bean>	
- 	
+	</bean>
+		
+	<!-- 自动查找basePackage下的映射器并自动将它们创建为MapperFactoryBean；可以通过注入spring bean的相同方式直接注入映射器 -->
+ 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.codingfans.repository" />
+		<property name="annotationClass" value="com.codingfans.repository.MybatisRepository"/>
+	</bean>
+	
 	<!-- 事务管理管理器 -->	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		 p:dataSource-ref="dataSource"	/>
-		
-	<!-- 配置Jdbc模板 -->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>	
 		
 	<!-- 使用annotation定义事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />	

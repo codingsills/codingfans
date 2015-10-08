@@ -14,7 +14,6 @@ public class User{
 	private String status;
 
 
-
 	public String getLoginName() {
 		return loginName;
 	}
@@ -70,5 +69,5 @@ public class User{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
 }
