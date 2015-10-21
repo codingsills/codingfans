@@ -29,7 +29,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 自动扫描entity目录, 省掉类别名的手工配置 -->
-		<property name="typeAliasesPackage" value="com.codingfans.entity"></property>
+		<property name="typeAliasesPackage" value="com.codingfans.model"></property>
 		<!-- 显示指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml"></property>
 	</bean>
@@ -78,14 +78,10 @@
 		    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
 		    <property name="minEvictableIdleTimeMillis" value="300000" />
 		 	<!-- 验证连接是否有效 -->
-		    <property name="validationQuery" value="SELECT 'x'" />
-		    <property name="testWhileIdle" value="true" />
+<!-- 		    <property name="validationQuery" value="SELECT 'x'" /> -->
+		    <property name="testWhileIdle" value="false" /> 
 		    <property name="testOnBorrow" value="false" />
-		    <property name="testOnReturn" value="false" />
-		 
-		    <!-- 打开PSCache，并且指定每个连接上PSCache的大小（Oracle使用）
-		    <property name="poolPreparedStatements" value="true" />
-		    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" /> -->
+		    <property name="testOnReturn" value="false" /> 
 		 
 		    <!-- 配置监控统计拦截的filters -->
 		    <property name="filters" value="stat" />
@@ -117,8 +113,8 @@
 		    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
 		    <property name="minEvictableIdleTimeMillis" value="300000" />
 		 	<!-- 验证连接是否有效 -->
-		    <property name="validationQuery" value="SELECT 'x'" />
-		    <property name="testWhileIdle" value="true" />
+<!-- 		    <property name="validationQuery" value="SELECT 'x'" /> -->
+		    <property name="testWhileIdle" value="false" />
 		    <property name="testOnBorrow" value="false" />
 		    <property name="testOnReturn" value="false" />
 		 

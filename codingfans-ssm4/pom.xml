@@ -101,13 +101,6 @@
 		<version>${druid-version}</version>
 	</dependency>
 	
-	<!-- h2 数据库 -->
-	<dependency>
-		<groupId>com.h2database</groupId>
-		<artifactId>h2</artifactId>
-		<version>1.4.189</version>
-	</dependency>
-	
 	<!-- logback -->
 	<dependency>
 		<groupId>ch.qos.logback</groupId>

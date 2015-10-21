@@ -1,7 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.codingfans.repository.UserMybatisDao">
-
-</mapper> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codingfans.repository.mybatis.UserMapper" >
+    <resultMap id="UserMapper" type="com.codingfans.model.User" >
+        <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+        <result column="ID" property="id" jdbcType="INTEGER" />
+        <result column="PLAIN_PWD" property="plainPwd" jdbcType="VARCHAR" />
+        <result column="PWD" property="pwd" jdbcType="VARCHAR" />
+        <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
+        <result column="SALT" property="salt" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="INTEGER" />
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+    	ID,
+        EMAIL,
+        PLAIN_PWD,
+        PWD,
+        REAL_NAME,
+        SALT,
+        STATUS,
+        USER_NAME
+    </sql>
+    
+    <select id="read" resultMap="UserMapper" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from ssm4.TB_USER
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="insert" parameterType="com.codingfans.model.User" useGeneratedKeys="true" keyProperty="id" >
+        insert into TB_USER (<include refid="Base_Column_List" />)
+        values (
+        #{id,jdbcType=INTEGER},
+        #{email,jdbcType=VARCHAR},
+        #{plainPwd,jdbcType=VARCHAR},
+        #{pwd,jdbcType=VARCHAR},
+        #{realName,jdbcType=VARCHAR},
+        #{salt,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER},
+        #{userName,jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <update id="update" parameterType="com.codingfans.model.User" >
+        update TB_USER
+        <set>
+            EMAIL = #{email,jdbcType=VARCHAR},
+            ID = #{id,jdbcType=INTEGER},
+            PLAIN_PWD = #{plainPwd,jdbcType=VARCHAR},
+            PWD = #{pwd,jdbcType=VARCHAR},
+            REAL_NAME = #{realName,jdbcType=VARCHAR},
+            SALT = #{salt,jdbcType=VARCHAR},
+            STATUS = #{status,jdbcType=INTEGER},
+            USER_NAME = #{userName,jdbcType=VARCHAR}
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from TB_USER
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <select id="queryUserCount" resultType="java.lang.Integer">
+    	select count(1) from TB_USER
+    </select>
+    
+    <select id="queryUserList" resultMap="UserMapper">
+    	select <include refid="Base_Column_List" /> from TB_USER
+			
+    </select>
+    
+</mapper>
