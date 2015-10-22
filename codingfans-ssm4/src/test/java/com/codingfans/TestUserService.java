@@ -38,7 +38,6 @@ public class TestUserService {
     @Test
     public void testInsert(){
         User user = new User();
-        user.setId(1);
         user.setPlainPwd("123456");
         user.setPwd("123456");
         user.setUserName("admin");

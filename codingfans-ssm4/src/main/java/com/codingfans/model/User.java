@@ -23,7 +23,7 @@ public class User implements Serializable {
     /**
      * 
      */
-    private Integer id;
+    private String userId;
 
     /**
      * 
@@ -64,15 +64,16 @@ public class User implements Serializable {
 
         this.email = email;
     }
-
-    public Integer getId() {
-
-        return id;
+    
+    public String getUserId() {
+    
+        return userId;
     }
 
-    public void setId(Integer id) {
-
-        this.id = id;
+    
+    public void setUserId(String userId) {
+    
+        this.userId = userId;
     }
 
     public String getPlainPwd() {

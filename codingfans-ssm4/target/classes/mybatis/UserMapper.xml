@@ -3,17 +3,17 @@
 <mapper namespace="com.codingfans.repository.mybatis.UserMapper" >
     <resultMap id="UserMapper" type="com.codingfans.model.User" >
         <result column="EMAIL" property="email" jdbcType="VARCHAR" />
-        <result column="ID" property="id" jdbcType="INTEGER" />
+        <result column="USER_ID" property="userId" jdbcType="CHAR" />
         <result column="PLAIN_PWD" property="plainPwd" jdbcType="VARCHAR" />
         <result column="PWD" property="pwd" jdbcType="VARCHAR" />
         <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
         <result column="SALT" property="salt" jdbcType="VARCHAR" />
-        <result column="STATUS" property="status" jdbcType="INTEGER" />
+        <result column="STATUS" property="status" jdbcType="CHAR" />
         <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
     </resultMap>
     
     <sql id="Base_Column_List" >
-    	ID,
+    	USER_ID,
         EMAIL,
         PLAIN_PWD,
         PWD,
@@ -23,23 +23,26 @@
         USER_NAME
     </sql>
     
-    <select id="read" resultMap="UserMapper" parameterType="java.lang.Integer" >
+    <select id="read" resultMap="UserMapper" parameterType="java.lang.String" >
         select 
         <include refid="Base_Column_List" />
-        from ssm4.TB_USER
-        where ID = #{id,jdbcType=INTEGER}
+        from TB_USER
+        where USER_ID = #{userId,jdbcType=CHAR}
     </select>
     
-    <insert id="insert" parameterType="com.codingfans.model.User" useGeneratedKeys="true" keyProperty="id" >
+    <insert id="insert" parameterType="com.codingfans.model.User" useGeneratedKeys="true" keyProperty="userId" >
+        <selectKey keyProperty="userId" resultType="java.lang.String" order="BEFORE">
+			select nextval for USER_ID from sysibm.sysdummy1
+		</selectKey>
         insert into TB_USER (<include refid="Base_Column_List" />)
         values (
-        #{id,jdbcType=INTEGER},
+        #{userId,jdbcType=CHAR},
         #{email,jdbcType=VARCHAR},
         #{plainPwd,jdbcType=VARCHAR},
         #{pwd,jdbcType=VARCHAR},
         #{realName,jdbcType=VARCHAR},
         #{salt,jdbcType=VARCHAR},
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=CHAR},
         #{userName,jdbcType=VARCHAR}
         )
     </insert>
@@ -48,20 +51,20 @@
         update TB_USER
         <set>
             EMAIL = #{email,jdbcType=VARCHAR},
-            ID = #{id,jdbcType=INTEGER},
+            USER_ID = #{userId,jdbcType=CHAR},
             PLAIN_PWD = #{plainPwd,jdbcType=VARCHAR},
             PWD = #{pwd,jdbcType=VARCHAR},
             REAL_NAME = #{realName,jdbcType=VARCHAR},
             SALT = #{salt,jdbcType=VARCHAR},
-            STATUS = #{status,jdbcType=INTEGER},
+            STATUS = #{status,jdbcType=CHAR},
             USER_NAME = #{userName,jdbcType=VARCHAR}
         </set>
-        where ID = #{id,jdbcType=INTEGER}
+        where USER_ID = #{userId,jdbcType=CHAR}
     </update>
     
-    <delete id="delete" parameterType="java.lang.Integer" >
+    <delete id="delete" parameterType="java.lang.String" >
         delete from TB_USER
-        where ID = #{id,jdbcType=INTEGER}
+        where USER_ID = #{userId,jdbcType=CHAR}
     </delete>
     
     <select id="queryUserCount" resultType="java.lang.Integer">
@@ -70,7 +73,6 @@
     
     <select id="queryUserList" resultMap="UserMapper">
     	select <include refid="Base_Column_List" /> from TB_USER
-			
     </select>
     
 </mapper>
