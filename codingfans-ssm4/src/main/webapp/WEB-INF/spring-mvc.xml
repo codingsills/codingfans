@@ -19,9 +19,8 @@
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 		    	<constructor-arg value="UTF-8" />
 			</bean>
-			<!-- 将Jackson2HttpMessageConverter的默认格式化输出设为true -->
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="prettyPrint" value="true"/>
+			<bean class="org.springframework.http.converter.json.GsonHttpMessageConverter">
+                <!-- <property name="prettyPrint" value="true"/> -->
             </bean>
   		</mvc:message-converters>
 	</mvc:annotation-driven>
@@ -47,7 +46,7 @@
 	<mvc:default-servlet-handler/>
 	
 	<!-- 定义无需Controller的url<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="redirect:/login"/>
+	<!-- <mvc:view-controller path="/" view-name="redirect:/login"/> -->
 	
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
 		<property name="exceptionMappings">  

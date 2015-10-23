@@ -23,7 +23,7 @@ public interface UserMapper {
 	 * @param id
 	 * @return
 	 */
-	public User read(Integer id);
+	public User read(String userId);
 
 	/**
 	 * 新增User
@@ -44,7 +44,7 @@ public interface UserMapper {
 	 * 
 	 * @param id
 	 */
-	public void delete(Integer id);
+	public void delete(String userId);
 
 	/**
 	 * 查询User数量
@@ -61,5 +61,14 @@ public interface UserMapper {
 	 * @return
 	 */
 	public List<User> queryUserList(User user);
+	
+	
+	/**
+	 * 根据用户名查询
+	 * 
+	 * @param loginName
+	 * @return
+	 * */
+	public User queryByUserName(String userName);
 
 }

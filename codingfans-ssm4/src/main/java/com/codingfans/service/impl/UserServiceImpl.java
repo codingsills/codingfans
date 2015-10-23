@@ -18,14 +18,18 @@ import com.codingfans.service.UserService;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+    
+    public static final String HASH_ALGORITHM = "SHA-1";
+    public static final int HASH_INTERATIONS = 1024;
+    private static final int SALT_SIZE = 8;
 
     @Resource
     private UserMapper userMapper;
 
     @Override
-    public User read(Integer id) {
+    public User read(String userId) {
 
-        return userMapper.read(id);
+        return userMapper.read(userId);
     }
 
     @Override
@@ -41,9 +45,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String userId) {
 
-        userMapper.delete(id);
+        userMapper.delete(userId);
     }
 
     @Override
@@ -56,5 +60,11 @@ public class UserServiceImpl implements UserService {
     public List<User> queryUserList(User user) {
 
         return userMapper.queryUserList(user);
+    }
+
+    @Override
+    public User queryByUserName(String userName) {
+
+        return userMapper.queryByUserName(userName);
     }
 }

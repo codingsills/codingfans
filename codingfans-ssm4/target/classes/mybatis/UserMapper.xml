@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.codingfans.repository.mybatis.UserMapper" >
     <resultMap id="UserMapper" type="com.codingfans.model.User" >
-        <result column="EMAIL" property="email" jdbcType="VARCHAR" />
         <result column="USER_ID" property="userId" jdbcType="CHAR" />
+        <result column="EMAIL" property="email" jdbcType="VARCHAR" />
         <result column="PLAIN_PWD" property="plainPwd" jdbcType="VARCHAR" />
         <result column="PWD" property="pwd" jdbcType="VARCHAR" />
         <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
@@ -71,8 +71,26 @@
     	select count(1) from TB_USER
     </select>
     
-    <select id="queryUserList" resultMap="UserMapper">
+    <select id="queryUserList" resultMap="UserMapper" parameterType="com.codingfans.model.User">
     	select <include refid="Base_Column_List" /> from TB_USER
+    	<where>
+    	1=1
+    		<if test="userId != null and userId != ''">
+    			and USER_ID = #{userId,jdbcType=CHAR}
+    		</if>
+    		<if test="userName != null and userName != ''">
+    			and USER_NAME = #{userName,jdbcType=VARCHAR}
+    		</if>
+    		<if test="realName != null and realName != ''">
+    			and REAL_NAME = #{realName,jdbcType=VARCHAR}
+    		</if>
+    	</where>
+    </select>
+    
+    <select id="queryByUserName" parameterType="java.lang.String"
+    	 resultMap="UserMapper">
+    	select <include refid="Base_Column_List" /> from TB_USER 
+    	where USER_NAME = #{userName,jdbcType=VARCHAR}
     </select>
     
 </mapper>

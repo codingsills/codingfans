@@ -7,6 +7,8 @@
  */
 package com.codingfans;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -17,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.codingfans.model.User;
 import com.codingfans.service.UserService;
+import com.google.gson.Gson;
 
 /**
  * 类功能描述
@@ -47,4 +50,19 @@ public class TestUserService {
         user.setSalt("abc");
         userService.insert(user);
     }
+    
+    @Test
+    public void testQueryList(){
+        User user = new User();
+        user.setUserName("admin");
+        List<User> userList = userService.queryUserList(user);
+        System.out.println(new Gson().toJson(userList));
+    }
+    
+    @Test
+    public void testQueryUser(){
+        User user = userService.queryByUserName("admin");
+        System.out.println(new Gson().toJson(user));
+    }
+    
 }

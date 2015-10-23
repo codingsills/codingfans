@@ -8,8 +8,10 @@
 package com.codingfans.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 类功能描述
@@ -21,11 +23,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @version 0.1.0
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
     
+    
     @RequestMapping(method=RequestMethod.GET)
-    public String login(){
+    public String index(){
         return "user/login";
     }
+    
+    @RequestMapping(value="/login",method=RequestMethod.POST)
+    public String login(String userName,String password,
+            Model model){
+        if("admin".equals(userName) && "123456".equals(password)){
+            model.addAttribute("userName", userName);
+            return "user/main";
+        }else{
+            return "user/login";
+        }
+    }
+
+    
+    
 }

@@ -5,15 +5,10 @@
 
 	<description>Shiro安全配置</description>
 
-	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<!-- shiro web 安全管理器-->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="shiroDbRealm" />
 		<property name="cacheManager" ref="shiroEhcacheManager" />
-	</bean>
-
-	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
-	<bean id="shiroDbRealm" class="org.springside.examples.quickstart.service.account.ShiroDbRealm">
-		<property name="accountService" ref="accountService"/>
 	</bean>
 	
 	<!-- Shiro Filter -->
@@ -32,6 +27,11 @@
 				/** = user
 			</value>
 		</property>
+	</bean>
+	
+	<!-- 項目自定义的Realm-->
+	<bean id="shiroDbRealm" class="com.codingfans.security.ShiroDbRealm">
+		<property name="userService" ref="userService"/>
 	</bean>
 	
 	<!-- 用户授权信息Cache, 采用EhCache -->
