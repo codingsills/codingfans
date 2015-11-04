@@ -20,10 +20,10 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.codec.Hex;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.springside.modules.utils.Encodes;
 
 import com.codingfans.model.User;
 import com.codingfans.service.UserService;
@@ -44,7 +44,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     protected UserService userService;
 
     /**
-     * 
+     * 授权回调方法
      * */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -68,7 +68,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         User user = userService.queryByUserName(token.getUsername());
         if(user != null){
-            byte[] salt = Encodes.decodeHex(user.getSalt());
+            byte[] salt = Hex.decode(user.getSalt().getBytes());
             return new SimpleAuthenticationInfo(
                     new ShiroUser(user.getUserId(), user.getUserName(), user.getRealName()),
                     user.getPwd(),ByteSource.Util.bytes(salt),getName());
