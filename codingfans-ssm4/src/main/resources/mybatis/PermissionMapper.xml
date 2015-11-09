@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codingfans.repository.mybatis.PermissionMapper" >
+    <resultMap id="PermissionMapper" type="com.codingfans.model.Permission" >
+        <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+        <result column="PM_ID" property="pmId" jdbcType="CHAR" />
+        <result column="PM_NAME" property="pmName" jdbcType="VARCHAR" />
+        <result column="PM_TYPE" property="pmType" jdbcType="CHAR" />
+        <result column="RULE" property="rule" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        DESCRIPTION,
+        PM_ID,
+        PM_NAME,
+        PM_TYPE,
+        RULE
+    </sql>
+    
+    <select id="read" resultMap="PermissionMapper" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from TB_PERMISSION
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="insert" parameterType="com.codingfans.model.Permission" useGeneratedKeys="true" keyProperty="id" >
+        <selectKey keyProperty="pmId" resultType="java.lang.String" order="BEFORE">
+			select nextval for PM_ID from sysibm.sysdummy1
+		</selectKey>
+        insert into TB_PERMISSION (<include refid="Base_Column_List" />)
+        values (
+        #{description,jdbcType=VARCHAR},
+        #{pmId,jdbcType=CHAR},
+        #{pmName,jdbcType=VARCHAR},
+        #{pmType,jdbcType=CHAR},
+        #{rule,jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <update id="update" parameterType="com.codingfans.model.Permission" >
+        update TB_PERMISSION
+        <set>
+            DESCRIPTION = #{description,jdbcType=VARCHAR},
+            PM_ID = #{pmId,jdbcType=CHAR},
+            PM_NAME = #{pmName,jdbcType=VARCHAR},
+            PM_TYPE = #{pmType,jdbcType=CHAR},
+            RULE = #{rule,jdbcType=VARCHAR}
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from TB_PERMISSION
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <select id="queryPermissionCount" resultType="java.lang.Integer">
+    	select count(1) from TB_PERMISSION
+    </select>
+    
+    <select id="queryPermissionList" resultMap="PermissionMapper">
+    	select <include refid="Base_Column_List" /> from TB_PERMISSION
+			
+    </select>
+    
+</mapper>

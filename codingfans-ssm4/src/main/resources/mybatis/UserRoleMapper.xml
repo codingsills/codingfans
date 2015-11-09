@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codingfans.repository.mybatis.UserRoleMapper" >
+    <resultMap id="UserRoleMapper" type="com.codingfans.model.UserRole" >
+        <result column="ROLE_ID" property="roleId" jdbcType="CHAR" />
+        <result column="USER_ID" property="userId" jdbcType="CHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        ROLE_ID,
+        USER_ID
+    </sql>
+    
+    <select id="read" resultMap="UserRoleMapper" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from TB_USER_ROLE
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="insert" parameterType="com.codingfans.model.UserRole" useGeneratedKeys="true" keyProperty="id" >
+        insert into TB_USER_ROLE (<include refid="Base_Column_List" />)
+        values (
+        #{roleId,jdbcType=CHAR},
+        #{userId,jdbcType=CHAR}
+        )
+    </insert>
+    
+    <update id="update" parameterType="com.codingfans.model.UserRole" >
+        update TB_USER_ROLE
+        <set>
+            ROLE_ID = #{roleId,jdbcType=CHAR},
+            USER_ID = #{userId,jdbcType=CHAR}
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from TB_USER_ROLE
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <select id="queryUserRoleCount" resultType="java.lang.Integer">
+    	select count(1) from TB_USER_ROLE
+    </select>
+    
+    <select id="queryUserRoleList" resultMap="UserRoleMapper">
+    	select <include refid="Base_Column_List" /> from TB_USER_ROLE
+			
+    </select>
+    
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codingfans.repository.mybatis.RoleMapper" >
+    <resultMap id="RoleMapper" type="com.codingfans.model.Role" >
+        <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+        <result column="ROLE_ID" property="roleId" jdbcType="CHAR" />
+        <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="CHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        DESCRIPTION,
+        ROLE_ID,
+        ROLE_NAME,
+        STATUS
+    </sql>
+    
+    <select id="read" resultMap="RoleMapper" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from TB_ROLE
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="insert" parameterType="com.codingfans.model.Role" useGeneratedKeys="true" keyProperty="id" >
+        <selectKey keyProperty="roleId" resultType="java.lang.String" order="BEFORE">
+			select nextval for ROLE_ID from sysibm.sysdummy1
+		</selectKey>
+        insert into TB_ROLE (<include refid="Base_Column_List" />)
+        values (
+        #{description,jdbcType=VARCHAR},
+        #{roleId,jdbcType=CHAR},
+        #{roleName,jdbcType=VARCHAR},
+        #{status,jdbcType=CHAR}
+        )
+    </insert>
+    
+    <update id="update" parameterType="com.codingfans.model.Role" >
+        update TB_ROLE
+        <set>
+            DESCRIPTION = #{description,jdbcType=VARCHAR},
+            ROLE_ID = #{roleId,jdbcType=CHAR},
+            ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+            STATUS = #{status,jdbcType=CHAR}
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from TB_ROLE
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <select id="queryRoleCount" resultType="java.lang.Integer">
+    	select count(1) from TB_ROLE
+    </select>
+    
+    <select id="queryRoleList" resultMap="RoleMapper">
+    	select <include refid="Base_Column_List" /> from TB_ROLE
+			
+    </select>
+    
+</mapper>

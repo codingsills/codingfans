@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codingfans.repository.mybatis.RolePermissionMapper" >
+    <resultMap id="RolePermissionMapper" type="com.codingfans.model.RolePermission" >
+        <result column="PM_ID" property="pmId" jdbcType="CHAR" />
+        <result column="ROLE_ID" property="roleId" jdbcType="CHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        PM_ID,
+        ROLE_ID
+    </sql>
+    
+    <select id="read" resultMap="RolePermissionMapper" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from TB_ROLE_PERMISSION
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="insert" parameterType="com.codingfans.model.RolePermission" useGeneratedKeys="true" keyProperty="id" >
+        insert into TB_ROLE_PERMISSION (<include refid="Base_Column_List" />)
+        values (
+        #{pmId,jdbcType=CHAR},
+        #{roleId,jdbcType=CHAR}
+        )
+    </insert>
+    
+    <update id="update" parameterType="com.codingfans.model.RolePermission" >
+        update TB_ROLE_PERMISSION
+        <set>
+            PM_ID = #{pmId,jdbcType=CHAR},
+            ROLE_ID = #{roleId,jdbcType=CHAR}
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from TB_ROLE_PERMISSION
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <select id="queryRolePermissionCount" resultType="java.lang.Integer">
+    	select count(1) from TB_ROLE_PERMISSION
+    </select>
+    
+    <select id="queryRolePermissionList" resultMap="RolePermissionMapper">
+    	select <include refid="Base_Column_List" /> from TB_ROLE_PERMISSION
+			
+    </select>
+    
+</mapper>
