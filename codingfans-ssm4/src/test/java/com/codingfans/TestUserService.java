@@ -42,7 +42,7 @@ public class TestUserService {
     public void testInsert(){
         User user = new User();
         user.setPlainPwd("123456");
-        user.setPwd("123456");
+        user.setPassword("123456");
         user.setUserName("admin");
         user.setRealName("张三");
         user.setStatus(1);

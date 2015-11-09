@@ -3,7 +3,7 @@ package com.codingfans.model;
 import java.io.Serializable;
 
 /**
- * 
+ * 用户类
  *
  * @author Saber
  * @date 2015-10-20 17:11:14
@@ -16,42 +16,42 @@ public class User implements Serializable {
     private static final long serialVersionUID = 3574849894180631930L;
 
     /**
-     * 
+     * 邮箱
      */
     private String email;
 
     /**
-     * 
+     * 用户ID
      */
     private String userId;
 
     /**
-     * 
+     * 用户密码（未加密）
      */
     private String plainPwd;
 
     /**
-     * 
+     * 用户密码（加密）
      */
-    private String pwd;
+    private String password;
 
     /**
-     * 
+     * 真实姓名
      */
     private String realName;
 
     /**
-     * 
+     * 盐（加密的佐料）
      */
     private String salt;
 
     /**
-     * 
+     * 状态
      */
     private Integer status;
 
     /**
-     * 
+     * 用户名
      */
     private String userName;
 
@@ -86,14 +86,15 @@ public class User implements Serializable {
         this.plainPwd = plainPwd;
     }
 
-    public String getPwd() {
-
-        return pwd;
+    public String getPassword() {
+    
+        return password;
     }
 
-    public void setPwd(String pwd) {
-
-        this.pwd = pwd;
+    
+    public void setPassword(String password) {
+    
+        this.password = password;
     }
 
     public String getRealName() {

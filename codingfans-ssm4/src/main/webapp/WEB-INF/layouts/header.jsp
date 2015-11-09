@@ -1,9 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> --%>
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <div id="header">
-	<div id="title">
 	    <h1><a href="${ctx}">SSM4示例</a><small>演示</small>
 <%-- 	    <shiro:user>
 			<div class="btn-group pull-right">
@@ -24,5 +21,4 @@
 			</div>
 		</shiro:user> --%>
 		</h1>
-	</div>
 </div>
