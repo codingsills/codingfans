@@ -6,42 +6,45 @@
 </head>
 	
 <body>
-	<table id="grid"></table>
+	<table id="t_grid"></table>
+	<div id="toolbar">
+		<button id="b_add" class="btn btn-primary">
+            <i class="glyphicon glyphicon-plus"></i>新增
+        </button>
+		<button id="b_remove" class="btn btn-danger" disabled>
+            <i class="glyphicon glyphicon-remove"></i>删除
+        </button>
+	</div>
 	<script type="text/javascript">
-		var grid ;
-		var toolbar = [{
-			iconCls:'icon-add',
-			text:'新增',
-			handler:function(){
+		var grid;
+		function initBtn(){
+			$('#b_add').unbind().bind('click',function(){
 				window.location.href='${ctx}/user/addView.action';
-			}
-		},'-',{
-			iconCls:'icon-edit',
-			text:'修改',
-			handler:function(){
-				alert('修改');
-			}
-		},'-',{
-			iconCls:'icon-remove',
-			text:'删除',
-			handler:function(){
-				alert('删除');
-			}
-		}];
-		$(function(){
-			grid = $('#grid').datagrid({
-				title:'用户列表',
-				url:'${ctx}/user/list.action',
-				toolbar:toolbar,
-				height:500,
-				columns:[[
-		          {field:'userId',title:'ID',width:50},
-		          {field:'userName',title:'用户名',width:120},
-		          {field:'email',title:'邮箱',width:120},
-		          {field:'opt',title:'操作',width:100}
-				]]
 			});
-		});
+			$('#b_remove').unbind().bind('click',function(){
+				//window.location.href='${ctx}/user/addView.action';
+			});			
+		}
+		$(function(){
+			grid = $("#t_grid").bootstrapTable({
+				url:'${ctx}/user/list.action',
+				columns:[
+		         {field:'userId',title:'ID'},
+		         {field:'userName',title:'用户名'},
+		         {field:'email',title:'邮箱'},
+		         {field:'opt',title:'操作'}
+		        ],
+		        toolbar:'#toolbar',
+		        pagination:true,
+		        sidePagination:'server',
+		        pageNumber:1,
+		        pageSize:10,
+		        pageList:[10,25,50],
+		        showPaginationSwitch:true,
+		        width:300
+			});
+			initBtn();
+		})
 	</script>
 </body>
 </html>

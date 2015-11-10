@@ -6,21 +6,30 @@
 
 <!------------------------------------- 公用样式引入 ------------------------------------>
 
-<!-- easyui css -->
-<link rel="stylesheet" type="text/css" href="${ctx}/static/easyui-1.4.4/themes/metro/easyui.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/static/easyui-1.4.4/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/static/easyui-1.4.4/themes/color.css">
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- bootstrap table css -->
+<link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/table/bootstrap-table.min.css">
+<!-- bootstrap validator css -->
+<link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/validator-0.4.5/bootstrapValidator.min.css">
+<!-- metisMenu css -->
+<link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/metisMenu/metisMenu.min.css">
+
 
 <!------------------------------------- 公用JS引入 ------------------------------------->
 
 <!-- jquery js -->
 <script src="${ctx}/static/jquery/jquery-2.1.4.min.js" type="text/javascript" ></script>
-<!-- jquery-validation js -->
-<script src="${ctx}/static/jquery-validation/jquery.validate.min.js" type="text/javascript" ></script>
-<script src="${ctx}/static/jquery-validation/messages_zh.js" type="text/javascript" ></script>
-<!-- easyui js -->
-<script src="${ctx}/static/easyui-1.4.4/jquery.easyui.min.js" type="text/javascript" ></script>
-<script src="${ctx}/static/easyui-1.4.4/easyui-lang-zh_CN.js" type="text/javascript" ></script>
+<!-- bootstrap js -->
+<script src="${ctx}/static/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript" ></script>
+<!-- bootstrapValidator js -->
+<script src="${ctx}/static/bootstrap/validator-0.4.5/bootstrapValidator.min.js" type="text/javascript" ></script>
+<!-- bootstrap table js -->
+<script src="${ctx}/static/bootstrap/table/bootstrap-table.min.js" type="text/javascript" ></script>
+<script src="${ctx}/static/bootstrap/table/bootstrap-table-zh-CN.min.js" type="text/javascript" ></script>
+<!-- metisMenu js -->
+<script src="${ctx}/static/bootstrap/metisMenu/metisMenu.min.js" type="text/javascript" ></script>
 
 
 

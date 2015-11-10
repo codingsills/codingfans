@@ -24,6 +24,10 @@
 		<description>spring监听器</description>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!-- 停止服务时关闭异步查询使用到的线程池 -->
+	<listener>
+	    <listener-class>com.github.miemiedev.mybatis.paginator.CleanupMybatisPaginatorListener</listener-class>
+	</listener>
 	
 	<!-- 字符编码过滤器 -->
 	<filter>

@@ -5,7 +5,7 @@
  * 作者:Saber
  * 版权信息:
  */
-package com.codingfans.vo.user;
+package com.codingfans.vo;
 
 import com.codingfans.model.Role;
 

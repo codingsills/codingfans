@@ -14,8 +14,10 @@ import com.codingfans.repository.MybatisRepository;
  * @date 2015-10-20 17:11:14
  * 
  */
-@MybatisRepository("userMapper")
+@MybatisRepository(UserMapper.MAPPER)
 public interface UserMapper {
+    
+    public static final String MAPPER = "userMapper";
 
 	/**
 	 * 根据Id获取User

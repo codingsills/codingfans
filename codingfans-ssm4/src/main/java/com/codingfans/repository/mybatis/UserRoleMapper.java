@@ -2,6 +2,7 @@ package com.codingfans.repository.mybatis;
 
 import java.util.List;
 import com.codingfans.model.UserRole;
+import com.codingfans.repository.MybatisRepository;
 
 /**
  * UserRoleMapper
@@ -12,8 +13,10 @@ import com.codingfans.model.UserRole;
  * @date 2015-11-09 14:13:51
  * 
  */
+@MybatisRepository(UserRoleMapper.MAPPER)
 public interface UserRoleMapper {
 
+    public static final String MAPPER = "userRoleMapper";
 	/**
 	 * 根据Id获取UserRole
 	 * 

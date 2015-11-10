@@ -6,38 +6,119 @@
 </head>
 	
 <body>
-	<div class="easyui-panel" title="新增用户">
-		<form id="addForm" method="post" action="${ctx}/user/addUser.action">
-		<table>
-			<tr>
-				<td>用户名：</td>
-				<td>
-					<input class="easyui-validatebox" type="text" name="userName" data-options="required:true" />
-				</td>
-			</tr>
-			<tr>
-				<td for="realName">姓名：</td>
-				<td>
-					<input class="easyui-validatebox" type="text" name="realName" data-options="required:true" />
-				</td>
-			</tr>
-			<tr>
-				<td for="plainPwd">密码：</td>
-				<td>
-					<input class="easyui-validatebox" type="password" name="plainPwd" data-options="required:true" />
-				</td>
-			</tr>
-			<tr>
-				<td for="roles">角色：</td>
-				<td>
-					<input class="easyui-validatebox" type="text" name="roles" data-options="required:false" />
-				</td>
-			</tr>
-		</table>
-		</form>
+	<div class="panel panel-default">
+		<div class="panel-heading">新增用户</div>
+		<div class="panel-body">
+			<form id="addForm" method="post" action="${ctx}/user/addUser.action" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">用户名</label>
+					<div class="col-lg-5">
+						<input class="form-control" type="text" name="userName"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">姓名</label>
+					<div class="col-lg-5">
+						<input class="form-control" type="text" name="realName" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">密码</label>
+					<div class="col-lg-5">
+						<input class="form-control" type="password" name="plainPwd" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">确认密码</label>
+					<div class="col-lg-5">
+						<input class="form-control" type="password" name="confirmPassword" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Email</label>
+					<div class="col-lg-5">
+						<input class="form-control" type="text" name="email" />
+					</div>
+				</div>
+<!-- 				<div class="form-group">
+					<label class="col-lg-3 control-label">角色</label>
+					<div class="col-lg-5">
+						<input class="form-control" type="text" name="roles" />
+					</div>
+				</div> -->
+				<div class="form-group">
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <button type="submit" class="btn btn-primary">新&emsp;增</button>
+                        <button id="toBack" type="button" class="btn btn-default">返&emsp;回</button>
+                    </div>
+                </div>
+			</form>
+		</div>
 	</div>
 	<script type="text/javascript">
-
+		function initBtn(){
+			$('#toBack').unbind().bind('click',function(){
+				window.location.href='${ctx}/user/list.action';
+			});
+		}
+		$(function(){
+			$('#addForm').bootstrapValidator({
+				message: '参数无效',
+		        feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields:{
+					userName:{
+						message:'用户名无效',
+						validators:{
+							notEmpty:{
+								message:'用户名不能为空'
+							},
+							stringLength: {
+		                        min: 6,
+		                        max: 30,
+		                        message: '用户名必须大于6个字符小于30个字符'
+		                    },
+		                    regexp: {
+		                        regexp: /^[a-zA-Z0-9_\.]+$/,
+		                        message: '用户名必须由字母和数字组成'
+		                    }
+						}
+					},
+					plainPwd: {
+		                validators: {
+		                    notEmpty: {
+		                        message: '密码不能为空'
+		                    }
+		                }
+		            },
+		            confirmPassword: {
+		                validators: {
+		                    notEmpty: {
+		                        message: '确认密码不能为空'
+		                    },
+		                    identical: {
+		                        field: 'plainPwd',
+		                        message: '确认密码与密码不一致'
+		                    }
+		                }
+		            },
+		            email: {
+		                validators: {
+		                    notEmpty: {
+		                        message: '邮箱地址不能为空'
+		                    },
+		                    emailAddress: {
+		                        message: '无效的邮箱地址'
+		                    }
+		                }
+		            },
+				}
+			});
+			initBtn();
+		});
 	</script>
 </body>
 </html>

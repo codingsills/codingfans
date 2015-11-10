@@ -2,6 +2,7 @@ package com.codingfans.repository.mybatis;
 
 import java.util.List;
 import com.codingfans.model.RolePermission;
+import com.codingfans.repository.MybatisRepository;
 
 /**
  * RolePermissionMapper
@@ -12,7 +13,10 @@ import com.codingfans.model.RolePermission;
  * @date 2015-11-09 14:13:51
  * 
  */
+@MybatisRepository(RolePermissionMapper.MAPPER)
 public interface RolePermissionMapper {
+    
+    public static final String MAPPER = "rolePermissionMapper";
 
 	/**
 	 * 根据Id获取RolePermission

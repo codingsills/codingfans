@@ -2,6 +2,7 @@ package com.codingfans.repository.mybatis;
 
 import java.util.List;
 import com.codingfans.model.Permission;
+import com.codingfans.repository.MybatisRepository;
 
 /**
  * PermissionMapper
@@ -12,8 +13,10 @@ import com.codingfans.model.Permission;
  * @date 2015-11-09 14:13:51
  * 
  */
+@MybatisRepository(PermissionMapper.MAPPER)
 public interface PermissionMapper {
 
+    public static final String MAPPER = "permissionMapper" ;
 	/**
 	 * 根据Id获取Permission
 	 * 

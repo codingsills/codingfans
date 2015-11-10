@@ -91,6 +91,13 @@
 		<version>1.2.3</version>
 	</dependency>
 	
+	<!-- Mybatis-paginator -->
+	<dependency>
+		<groupId>com.github.miemiedev</groupId>
+		<artifactId>mybatis-paginator</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+
 	<!-- hibernate-validator -->
 	<dependency>
 		<groupId>org.hibernate</groupId>
