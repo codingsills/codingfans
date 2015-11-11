@@ -12,7 +12,7 @@ import com.codingfans.model.RolePermission;
  * @date 2015-11-09 14:13:51
  * 
  */
-public interface RolePermissionService {
+public interface RolePermissionService{
 
 	/**
 	 * 根据Id获取RolePermission

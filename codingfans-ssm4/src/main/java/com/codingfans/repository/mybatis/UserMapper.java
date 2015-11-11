@@ -1,9 +1,12 @@
 package com.codingfans.repository.mybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import com.codingfans.model.User;
 import com.codingfans.repository.MybatisRepository;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 /**
  * UserMapper
@@ -72,5 +75,15 @@ public interface UserMapper {
 	 * @return
 	 * */
 	public User queryByUserName(String userName);
-
+	
+	/**
+     * 分页查询
+     * 
+     * @param user
+     * @param pageBounds
+     * 
+     * @return PageList<User>
+     * */
+    public PageList<User> getPageList(User user,PageBounds pageBounds);
+	
 }

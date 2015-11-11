@@ -28,17 +28,11 @@
 	<!-- Mybatis配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<!-- 自动扫描entity目录, 省掉类别名的手工配置 -->
-		<property name="typeAliasesPackage" value="com.codingfans.model"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<!-- 显示指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml"></property>
-		<property name="plugins">
-			<list>
-				<bean class="om.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
-					<property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.DB2Dialect"></property>
-				</bean>
-			</list>
-		</property>
+		<!-- 自动扫描entity目录, 省掉类别名的手工配置 -->
+		<property name="typeAliasesPackage" value="com.codingfans.model"></property>
 	</bean>
 		
 	<!-- 自动查找basePackage下的映射器并自动将它们创建为MapperFactoryBean；可以通过注入spring bean的相同方式直接注入映射器 -->

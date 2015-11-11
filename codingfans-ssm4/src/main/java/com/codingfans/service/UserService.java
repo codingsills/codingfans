@@ -1,8 +1,12 @@
 package com.codingfans.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.codingfans.model.User;
+import com.codingfans.utils.PageObject;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 /**
  * 
@@ -13,7 +17,7 @@ import com.codingfans.model.User;
  * @date 2015-10-20 17:11:14
  * 
  */
-public interface UserService {
+public interface UserService{
 
 	/**
 	 * 根据Id获取User
@@ -66,5 +70,14 @@ public interface UserService {
 	 * @return 
 	 * */
 	public User queryByUserName(String userName);
+	
+	/**
+     * 分页查询
+     * 
+     * @param user
+     * @param pageBounds
+     * 
+     * */
+    public PageObject<User> getPageList(User user,PageBounds pageBounds);
 
 }

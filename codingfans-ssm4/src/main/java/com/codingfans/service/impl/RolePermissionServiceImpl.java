@@ -18,7 +18,7 @@ import com.codingfans.service.RolePermissionService;
 @Service("rolePermissionService")
 public class RolePermissionServiceImpl implements RolePermissionService {
 
-  	@Resource
+    @Resource
   	private RolePermissionMapper rolePermissionMapper;
 
 	@Override

@@ -12,7 +12,7 @@ import com.codingfans.model.UserRole;
  * @date 2015-11-09 14:13:51
  * 
  */
-public interface UserRoleService {
+public interface UserRoleService{
 
 	/**
 	 * 根据Id获取UserRole

@@ -18,7 +18,7 @@ import com.codingfans.service.RoleService;
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
 
-  	@Resource
+    @Resource
   	private RoleMapper roleMapper;
 
 	@Override

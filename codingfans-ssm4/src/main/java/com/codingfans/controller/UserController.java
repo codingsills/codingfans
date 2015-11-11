@@ -7,8 +7,6 @@
  */
 package com.codingfans.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -16,10 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.codingfans.model.User;
 import com.codingfans.service.UserService;
 import com.codingfans.vo.UserVO;
-import com.google.gson.Gson;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 
 /**
  * 类功能描述
@@ -38,11 +35,10 @@ public class UserController {
     private UserService userService;
     
     @RequestMapping(value="/list.action")
-    public ModelAndView list(){
+    public ModelAndView list(@ModelAttribute(value="user")UserVO userVo,@ModelAttribute(value="page")PageBounds page){
         ModelAndView mav = new ModelAndView("user/list");
         //TODO 查询用户列表
-        List<User> list = userService.queryUserList(null);
-        mav.addObject("list", list);
+//        List<User> list = userService.queryUserList(null);
         return mav;
     }
     

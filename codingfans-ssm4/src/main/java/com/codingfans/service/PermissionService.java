@@ -12,7 +12,7 @@ import com.codingfans.model.Permission;
  * @date 2015-11-09 14:13:51
  * 
  */
-public interface PermissionService {
+public interface PermissionService{
 
 	/**
 	 * 根据Id获取Permission

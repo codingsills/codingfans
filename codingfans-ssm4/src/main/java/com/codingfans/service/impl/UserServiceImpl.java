@@ -1,12 +1,16 @@
 package com.codingfans.service.impl;
 
 import java.util.List;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.codingfans.model.User;
 import com.codingfans.repository.mybatis.UserMapper;
 import com.codingfans.service.UserService;
+import com.codingfans.utils.PageObject;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 /**
  * User Service 实现类
@@ -67,4 +71,13 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.queryByUserName(userName);
     }
+
+    @Override
+    public PageObject<User> getPageList(User user, PageBounds pageBounds) {
+        PageList<User> pageList = userMapper.getPageList(user, pageBounds);
+        PageObject<User> pageObj = new PageObject<>(pageList.getPaginator(), pageList);
+        return pageObj;
+    }
+
+   
 }

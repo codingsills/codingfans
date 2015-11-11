@@ -93,4 +93,20 @@
     	where USER_NAME = #{userName,jdbcType=VARCHAR}
     </select>
     
+    <select id="getPageList" parameterType="com.codingfans.model.User" resultMap="UserMapper">
+    	select <include refid="Base_Column_List" /> from TB_USER
+    	<where>
+    	1=1
+    		<if test="userId != null and userId != ''">
+    			and USER_ID = #{userId,jdbcType=CHAR}
+    		</if>
+    		<if test="userName != null and userName != ''">
+    			and USER_NAME = #{userName,jdbcType=VARCHAR}
+    		</if>
+    		<if test="realName != null and realName != ''">
+    			and REAL_NAME = #{realName,jdbcType=VARCHAR}
+    		</if>
+    	</where>
+    </select>
+    
 </mapper>

@@ -8,6 +8,7 @@
 package com.codingfans;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -19,6 +20,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.codingfans.model.User;
 import com.codingfans.service.UserService;
+import com.codingfans.utils.PageObject;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.google.gson.Gson;
 
 /**
@@ -54,7 +58,7 @@ public class TestUserService {
     @Test
     public void testQueryList(){
         User user = new User();
-        user.setUserName("admin");
+//        user.setUserName("admin");
         List<User> userList = userService.queryUserList(user);
         System.out.println(new Gson().toJson(userList));
     }
@@ -63,6 +67,14 @@ public class TestUserService {
     public void testQueryUser(){
         User user = userService.queryByUserName("admin");
         System.out.println(new Gson().toJson(user));
+    }
+    
+    @Test
+    public void testGetPageList(){
+        User user = new User();
+        PageBounds page = new PageBounds(1, 10);
+        PageObject<User> pageList = userService.getPageList(user, page);
+        System.out.println(new Gson().toJson(pageList));
     }
     
 }

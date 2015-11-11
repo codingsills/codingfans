@@ -12,7 +12,7 @@ import com.codingfans.model.Role;
  * @date 2015-11-09 14:13:51
  * 
  */
-public interface RoleService {
+public interface RoleService{
 
 	/**
 	 * 根据Id获取Role

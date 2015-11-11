@@ -17,8 +17,7 @@ import com.codingfans.service.UserRoleService;
  */
 @Service("userRoleService")
 public class UserRoleServiceImpl implements UserRoleService {
-
-  	@Resource
+    @Resource
   	private UserRoleMapper userRoleMapper;
 
 	@Override
