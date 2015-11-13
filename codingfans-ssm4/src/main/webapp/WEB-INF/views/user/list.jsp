@@ -27,7 +27,7 @@
 		}
 		$(function(){
 			grid = $("#t_grid").bootstrapTable({
-				url:'${ctx}/user/list.action',
+				url:'${ctx}/user/query.action',
 				columns:[
 		         {field:'userId',title:'ID'},
 		         {field:'userName',title:'用户名'},
