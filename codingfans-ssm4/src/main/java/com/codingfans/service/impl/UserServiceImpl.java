@@ -73,9 +73,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageObject<User> getPageList(User user, PageBounds pageBounds) {
+    public PageObject getPageList(User user, PageBounds pageBounds) {
         PageList<User> pageList = userMapper.getPageList(user, pageBounds);
-        PageObject<User> pageObj = new PageObject<>(pageList.getPaginator(), pageList);
+        PageObject pageObj = new PageObject(pageList);
         return pageObj;
     }
 

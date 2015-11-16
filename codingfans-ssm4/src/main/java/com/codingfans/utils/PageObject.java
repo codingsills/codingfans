@@ -9,6 +9,7 @@ package com.codingfans.utils;
 
 import java.util.Collection;
 
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 
 /**
@@ -20,49 +21,146 @@ import com.github.miemiedev.mybatis.paginator.domain.Paginator;
  * @author Saber
  * @version 0.1.0
  */
-public class PageObject<E> {
-    /**
-     * 分页返回参数    
-     */
-    private Paginator paginator;
+public class PageObject {
+    
+    private Integer page;
     
     /**
      * 分页数据对象
      */
-    private Collection<E> list;
+    private Collection<?> rows;
     
+    /**
+     * 数据总条数
+     * */
+    private Integer total;
+    
+    /**
+     * 每页条数
+     * */
+    private Integer limit;
+    
+    private Integer offset;
+    
+    private String order;
+    
+    private String sort;
+
     
     /**
      * PageObject.java 默认构造
      */
-    public PageObject(Paginator paginator, Collection<E> list) {
+    public PageObject(PageList<?> pageList) {
         super();
-        this.paginator = paginator;
-        this.list = list;
+        Paginator paginator = pageList.getPaginator();
+        this.page = paginator.getPage();
+        this.rows = pageList;
+        this.total = paginator.getTotalCount();
+    }
+    
+    public PageObject(Integer limit,Integer offset){
+        this.limit = limit;
+        this.offset = offset;
+    }
+    
+    public PageObject(){
+        
     }
 
 
-    public Paginator getPaginator() {
+    public Integer getPage() {
     
-        return paginator;
+        return page;
     }
 
     
-    public void setPaginator(Paginator paginator) {
+    public void setPage(Integer page) {
     
-        this.paginator = paginator;
+        this.page = page;
     }
 
     
-    public Collection<E> getList() {
+    public Collection<?> getRows() {
     
-        return list;
+        return rows;
     }
 
     
-    public void setList(Collection<E> list) {
+    public void setRows(Collection<?> rows) {
     
-        this.list = list;
+        this.rows = rows;
+    }
+
+    
+    public Integer getTotal() {
+    
+        return total;
+    }
+
+    
+    public void setTotal(Integer total) {
+    
+        this.total = total;
+    }
+
+
+    
+    public Integer getLimit() {
+    
+        return limit;
+    }
+
+
+    
+    public void setLimit(Integer limit) {
+    
+        this.limit = limit;
+    }
+
+
+    
+    public Integer getOffset() {
+    
+        return offset;
+    }
+
+
+    
+    public void setOffset(Integer offset) {
+    
+        this.offset = offset;
+    }
+    
+    
+    public String getOrder() {
+    
+        return order;
+    }
+
+
+    
+    public void setOrder(String order) {
+    
+        this.order = order;
+    }
+
+
+    
+    public String getSort() {
+    
+        return sort;
+    }
+
+
+    
+    public void setSort(String sort) {
+    
+        this.sort = sort;
+    }
+
+
+    public Integer getCPage(){
+        return (getOffset()/getLimit())+1;
     }
     
 }

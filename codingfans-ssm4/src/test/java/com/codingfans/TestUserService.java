@@ -8,7 +8,6 @@
 package com.codingfans;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -22,7 +21,6 @@ import com.codingfans.model.User;
 import com.codingfans.service.UserService;
 import com.codingfans.utils.PageObject;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
-import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.google.gson.Gson;
 
 /**
@@ -73,7 +71,7 @@ public class TestUserService {
     public void testGetPageList(){
         User user = new User();
         PageBounds page = new PageBounds(1, 10);
-        PageObject<User> pageList = userService.getPageList(user, page);
+        PageObject pageList = userService.getPageList(user, page);
         System.out.println(new Gson().toJson(pageList));
     }
     

@@ -7,19 +7,16 @@
  */
 package com.codingfans.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.codingfans.model.User;
 import com.codingfans.service.UserService;
+import com.codingfans.utils.PageObject;
 import com.codingfans.vo.UserVO;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 
@@ -46,12 +43,9 @@ public class UserController {
     }
     @RequestMapping(value="/query.action")
     @ResponseBody
-    public Object list(@ModelAttribute(value="user")UserVO userVo,@ModelAttribute(value="page")PageBounds page){
-        //TODO 查询用户列表
-        ModelMap map = new ModelMap();
-        List<User> list = userService.queryUserList(userVo);
-        map.addAttribute("data",list);
-        return map;
+    public Object list(@ModelAttribute(value="user")UserVO userVo,@ModelAttribute(value="page")PageObject page){
+        PageObject pageObj = userService.getPageList(userVo, new PageBounds(page.getCPage(), page.getLimit()));
+        return pageObj;
     }
     
     @RequestMapping(value="/addView.action")

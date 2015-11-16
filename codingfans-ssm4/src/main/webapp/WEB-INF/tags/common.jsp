@@ -30,7 +30,8 @@
 <script src="${ctx}/static/bootstrap/table/bootstrap-table-zh-CN.min.js" type="text/javascript" ></script>
 <!-- metisMenu js -->
 <script src="${ctx}/static/bootstrap/metisMenu/metisMenu.min.js" type="text/javascript" ></script>
-
+<!-- common js -->
+<script src="${ctx}/static/common/common.js" type="text/javascript" ></script>
 
 
 

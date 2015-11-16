@@ -78,6 +78,6 @@ public interface UserService{
      * @param pageBounds
      * 
      * */
-    public PageObject<User> getPageList(User user,PageBounds pageBounds);
+    public PageObject getPageList(User user,PageBounds pageBounds);
 
 }
