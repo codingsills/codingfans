@@ -62,7 +62,7 @@ public class UserController {
     
     @RequestMapping(value="/addUser.action")
     public ModelAndView addUser(@ModelAttribute(value="user")UserVO userVo){
-        ModelAndView mav = new ModelAndView("user/list");
+        ModelAndView mav = new ModelAndView("redirect:/user/list.action");
         //TODO 新增用户
         userVo.setPassword(userVo.getPlainPwd());
         userVo.setSalt("faelkflejzjpfjep");
