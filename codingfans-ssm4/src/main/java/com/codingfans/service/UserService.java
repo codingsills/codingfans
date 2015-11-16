@@ -1,12 +1,10 @@
 package com.codingfans.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.codingfans.model.User;
 import com.codingfans.utils.PageObject;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
-import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 /**
  * 
