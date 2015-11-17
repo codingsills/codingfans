@@ -6,6 +6,16 @@
 </head>
 	
 <body>
-	恭喜你${userName}，登录成功
+	<nav class="navbar navbar-static-top" role="navigation">
+		<div class="navbar-header">
+			<a class="glyphicon glyphicon-menu-hamburger btn btn-success"></a>
+		</div>
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle glyphicon glyphicon-envelope" data-toggle="dropdown">
+				</a>
+			</li>
+		</ul>
+	</nav>
 </body>
 </html>

@@ -12,9 +12,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.codingfans.model.User;
 import com.codingfans.service.UserService;
 import com.codingfans.utils.PageObject;
 import com.codingfans.vo.UserVO;
@@ -55,8 +57,10 @@ public class UserController {
     }
     
     @RequestMapping(value="/editView.action")
-    public ModelAndView toEditView(){
+    public ModelAndView toEditView(@RequestParam(name="userId")String userId){
         ModelAndView mav = new ModelAndView("user/edit");
+        User user = userService.read(userId);
+        mav.addObject("user", user);
         return mav;
     }
     
@@ -70,5 +74,12 @@ public class UserController {
         userService.insert(userVo);
         
         return mav;
+    }
+    
+    
+    
+    @RequestMapping(value="/mainView.action")
+    public String mainView(){
+        return "user/main";
     }
 }
