@@ -16,7 +16,6 @@
 	</div>
 	<table id="table" data-url="${ctx}/user/query.action"></table>
 		
-		
 <script type="text/javascript">
 	var $table,selections;
 	function initBtn(){
@@ -53,8 +52,8 @@
 	         	{field:'opt',title:'操作',
 	         		formatter:function(value,row,index){
 	         			var str = '';
-	         			str += formatstr('<a href="${ctx}/user/editView.action?userId={0}" title="修改"><i class="glyphicon glyphicon-edit"></i></a>',row.userId);
-	         			str += '&emsp;'+formatstr('<a href="${ctx}/user/editView.action?userId={0}" title="删除"><i class="glyphicon glyphicon-remove"></i></a>',row.userId);
+	         			str += formatStr('<a href="${ctx}/user/editView.action?userId={0}" title="修改"><i class="glyphicon glyphicon-edit"></i></a>',row.userId);
+	         			str += '&emsp;'+formatStr('<a href="${ctx}/user/editView.action?userId={0}" title="删除"><i class="glyphicon glyphicon-remove"></i></a>',row.userId);
 						return str;		
 	         		}
 	         	}

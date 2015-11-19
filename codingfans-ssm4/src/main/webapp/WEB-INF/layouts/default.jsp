@@ -21,7 +21,8 @@
 <link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/validator-0.4.5/bootstrapValidator.min.css">
 <!-- metisMenu css -->
 <link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/metisMenu/metisMenu.min.css">
-
+<!-- font-awesome css -->
+<link rel="stylesheet" href="${ctx}/static/font-awesome-4.4.0/css/font-awesome.min.css">
 <!------------------------------------- 公用JS引入 ------------------------------------->
 <!-- jquery js -->
 <script src="${ctx}/static/jquery/jquery-2.1.4.min.js" type="text/javascript" ></script>
