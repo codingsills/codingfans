@@ -6,8 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -22,7 +23,10 @@
 <!-- metisMenu css -->
 <link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/metisMenu/metisMenu.min.css">
 <!-- font-awesome css -->
-<link rel="stylesheet" href="${ctx}/static/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="${ctx}/static/font-awesome-4.4.0/css/font-awesome.min.css">
+<!-- common css -->
+<%-- <link rel="stylesheet" type="text/css" href="${ctx}/static/common/css/style.min.css" /> --%>
+
 <!------------------------------------- 公用JS引入 ------------------------------------->
 <!-- jquery js -->
 <script src="${ctx}/static/jquery/jquery-2.1.4.min.js" type="text/javascript" ></script>
@@ -43,7 +47,7 @@
 <sitemesh:write property='head' /> 
 </head>
 <body>
-	<div class="container">
+	<div>
 		<%@ include file="/WEB-INF/layouts/header.jsp"%>
 		<sitemesh:write property='body' />
 		<%@ include file="/WEB-INF/layouts/footer.jsp"%>

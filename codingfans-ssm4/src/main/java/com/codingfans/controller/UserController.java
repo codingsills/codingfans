@@ -76,10 +76,4 @@ public class UserController {
         return mav;
     }
     
-    
-    
-    @RequestMapping(value="/mainView.action")
-    public String mainView(){
-        return "user/main";
-    }
 }
