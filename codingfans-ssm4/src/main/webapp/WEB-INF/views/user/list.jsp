@@ -1,20 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-
 <html>
 <head>
-	<title>用户管理</title>
+<title>用户管理</title>
+<!-- bootstrap table js -->
+<script src="${ctx}/static/bootstrap/table/bootstrap-table.min.js" type="text/javascript" ></script>
+<script src="${ctx}/static/bootstrap/table/bootstrap-table-zh-CN.min.js" type="text/javascript" ></script>
 </head>
 	
 <body>
-	<div id="toolbar">
-		<button id="b_add" class="btn btn-primary">
-            <i class="glyphicon glyphicon-plus"></i>新增
-        </button>
-		<button id="b_remove" class="btn btn-danger" disabled>
-            <i class="glyphicon glyphicon-remove"></i>删除
-        </button>
+	<div>
+		<div id="toolbar">
+			<button id="b_add" class="btn btn-primary">
+	            <i class="glyphicon glyphicon-plus"></i>新增
+	        </button>
+			<button id="b_remove" class="btn btn-danger" disabled>
+	            <i class="glyphicon glyphicon-remove"></i>删除
+	        </button>
+		</div>
+		<table id="table" data-url="${ctx}/user/query.action"></table>
 	</div>
-	<table id="table" data-url="${ctx}/user/query.action"></table>
 		
 <script type="text/javascript">
 	var $table,selections;
@@ -43,7 +47,7 @@
     }
 	$(function(){
 		$table = $('#table').bootstrapTable({
-			height:getHeight(),
+			//height:getHeight(),
 			columns:[
 	         	{field:'state',checkbox:true,align:'center',valign:'middle'},
 	         	{field:'userId',title:'ID'},

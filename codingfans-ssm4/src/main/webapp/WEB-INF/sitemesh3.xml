@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemesh>
     <!-- 指明满足"/*"的页面，将被"/WEB-INF/layouts/default.jsp"所装饰 -->
-    <mapping path="/*" decorator="/WEB-INF/layouts/default.jsp" />
+    <mapping path="/*" decorator="/WEB-INF/layouts/default2.jsp" />
 
-    <mapping path="/demo/*" exclude="true"></mapping>
+    <mapping path="/frame/index.action" exclude="true"></mapping>
     <!-- 指明满足"/statiic/*"的页面，将被排除，不被装饰 -->
     <mapping path="/static/*" exclue="true" />
 </sitemesh>

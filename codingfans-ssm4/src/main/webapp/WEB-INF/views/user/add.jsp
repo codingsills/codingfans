@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-
 <html>
 <head>
 	<title>新增用户</title>
 </head>
 	
-<body>
-	<div class="panel panel-default">
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight">
 		<div class="panel-heading">新增用户</div>
 		<div class="panel-body">
 			<form id="addForm" method="post" action="${ctx}/user/addUser.action" class="form-horizontal">

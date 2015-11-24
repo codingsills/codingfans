@@ -178,7 +178,7 @@ h5 {
   color: #8095a8;
 }
 .minimalize-styl-2 {
-  padding: 4px 12px;
+  padding: 7px 12px;
   margin: 14px 5px 5px 20px;
   font-size: 14px;
   float: left;
@@ -7477,6 +7477,7 @@ body.skin-3 {
     display: none;
   }
 }
+/* 
 .content-tabs{position:relative;height:42px;background:#fafafa;line-height:40px}
 .content-tabs .roll-nav,.page-tabs-list{position:absolute;width:40px;height:40px;text-align:center;color:#999;z-index:2;top:0}
 .content-tabs .roll-left{left:0;border-right:solid 1px #eee}
@@ -7501,3 +7502,4 @@ button.roll-nav.roll-right.J_tabRight{right:80px}
 .page-tabs a i{color:#ccc}
 .page-tabs a.active{background:#2f4050;color:#a7b1c2}
 .page-tabs a.active i:hover,.page-tabs a.active:hover{background:#293846;color:#fff}
+ */
