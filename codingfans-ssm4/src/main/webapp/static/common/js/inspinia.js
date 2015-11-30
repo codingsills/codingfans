@@ -17,7 +17,6 @@ $(document).ready(function () {
 
     // MetsiMenu
     $('#side-menu').metisMenu();
-
     // Collapse ibox function
     $('.collapse-link').click(function () {
         var ibox = $(this).closest('div.ibox');
@@ -108,19 +107,23 @@ $(document).ready(function () {
 
         var navbarHeigh = $('nav.navbar-default').height();
         var wrapperHeigh = $('#page-wrapper').height();
+        var wrapperHeader = $('nav.navbar-static-top').height() + 5;
+        var wrapperFooter = $('#page-wrapper .footer').outerHeight();
 
         if (navbarHeigh > wrapperHeigh) {
             $('#page-wrapper').css("min-height", navbarHeigh + "px");
+            $('#main_frame').height(navbarHeigh - wrapperHeader - wrapperFooter);
         }
 
         if (navbarHeigh < wrapperHeigh) {
             $('#page-wrapper').css("min-height", $(window).height() + "px");
+            $('#main_frame').height($(window).height() - wrapperHeader - wrapperFooter);
         }
 
         if ($('body').hasClass('fixed-nav')) {
             $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
+            $('#main_frame').height($(window).height() - - wrapperHeader - wrapperFooter);
         }
-
     }
 
     fix_height();

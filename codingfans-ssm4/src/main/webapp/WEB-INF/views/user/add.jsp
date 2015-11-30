@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="../frame/tag.jsp"%>
 <html>
 <head>
+	<%@ include file="../frame/common.jsp" %>
 	<title>新增用户</title>
 </head>
 	

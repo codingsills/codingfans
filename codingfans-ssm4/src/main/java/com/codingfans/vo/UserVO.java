@@ -28,6 +28,8 @@ public class UserVO extends User{
     private static final long serialVersionUID = -121176665088549966L;
     
     private List<RoleVO> roles;
+    
+    private String search;
 
     
     public List<RoleVO> getRoles() {
@@ -39,6 +41,20 @@ public class UserVO extends User{
     public void setRoles(List<RoleVO> roles) {
     
         this.roles = roles;
+    }
+
+
+    
+    public String getSearch() {
+    
+        return search;
+    }
+
+
+    
+    public void setSearch(String search) {
+    
+        this.search = search;
     }
     
     

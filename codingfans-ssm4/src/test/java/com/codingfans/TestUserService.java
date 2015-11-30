@@ -17,8 +17,13 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.codingfans.model.Permission;
 import com.codingfans.model.User;
+import com.codingfans.service.PermissionService;
 import com.codingfans.service.UserService;
+import com.codingfans.utils.Menu;
+import com.codingfans.utils.Menu.MenuType;
+import com.codingfans.utils.Menu.RLeaf;
 import com.codingfans.utils.PageObject;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.google.gson.Gson;
@@ -39,6 +44,9 @@ public class TestUserService {
     
     @Resource
     private UserService userService;
+    
+    @Resource
+    private PermissionService permissionService;
     
     @Test
     public void testInsert(){
@@ -73,6 +81,18 @@ public class TestUserService {
         PageBounds page = new PageBounds(1, 10);
         PageObject pageList = userService.getPageList(user, page);
         System.out.println(new Gson().toJson(pageList));
+    }
+    
+    @Test
+    public void insertRootMenu(){
+        Permission pms = new Permission();
+        pms.setPmName("M+");
+        pms.setPmType(MenuType.ISMENU.getType());
+        pms.setRule("/");
+        pms.setWeight(0);
+        pms.setIsLeaf(RLeaf.ROOT.getType());
+        pms.setDescription("系统根节点");
+        permissionService.insert(pms);
     }
     
 }

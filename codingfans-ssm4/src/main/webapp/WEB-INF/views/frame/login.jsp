@@ -27,7 +27,7 @@
                 <h1 class="logo-name">M+</h1>
             </div>
             <h3>欢迎使用MPLUS</h3>
-            <form class="m-t" role="form" action="${ctx}/frame/login.action" method="POST">
+            <form class="m-t" role="form" action="${ctx}/login.action" method="POST">
                 <div class="form-group">
                     <input type=text name="username" class="form-control" placeholder="用户名" required="">
                 </div>

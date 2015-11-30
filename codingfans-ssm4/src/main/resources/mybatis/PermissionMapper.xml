@@ -7,6 +7,10 @@
         <result column="PM_NAME" property="pmName" jdbcType="VARCHAR" />
         <result column="PM_TYPE" property="pmType" jdbcType="CHAR" />
         <result column="RULE" property="rule" jdbcType="VARCHAR" />
+        <result column="PARENT_ID" property="parentId" jdbcType="CHAR" />
+        <result column="IS_LEAF" property="isLeaf" jdbcType="CHAR" />
+        <result column="WEIGHT" property="weight" jdbcType="BIGINT" />
+        <result column="ICON" property="icon" jdbcType="VARCHAR" />
     </resultMap>
     
     <sql id="Base_Column_List" >
@@ -14,7 +18,11 @@
         PM_ID,
         PM_NAME,
         PM_TYPE,
-        RULE
+        RULE,
+        PARENT_ID,
+        IS_LEAF,
+        WEIGHT,
+        ICON
     </sql>
     
     <select id="read" resultMap="PermissionMapper" parameterType="java.lang.Integer" >
@@ -34,7 +42,11 @@
         #{pmId,jdbcType=CHAR},
         #{pmName,jdbcType=VARCHAR},
         #{pmType,jdbcType=CHAR},
-        #{rule,jdbcType=VARCHAR}
+        #{rule,jdbcType=VARCHAR},
+        #{parentId,jdbcType=CHAR},
+        #{isLeaf,jdbcType=CHAR},
+        #{weight,jdbcType=BIGINT},
+        #{icon,jdbcType=VARCHAR}
         )
     </insert>
     
@@ -45,7 +57,11 @@
             PM_ID = #{pmId,jdbcType=CHAR},
             PM_NAME = #{pmName,jdbcType=VARCHAR},
             PM_TYPE = #{pmType,jdbcType=CHAR},
-            RULE = #{rule,jdbcType=VARCHAR}
+            RULE = #{rule,jdbcType=VARCHAR},
+            PARENT_ID = #{parentId,jdbcType=CHAR},
+        	IS_LEAF = #{isLeaf,jdbcType=CHAR},
+        	WEIGHT = #{weight,jdbcType=BIGINT},
+        	ICON = #{icon,jdbcType=VARCHAR}
         </set>
         where ID = #{id,jdbcType=INTEGER}
     </update>
@@ -59,9 +75,24 @@
     	select count(1) from TB_PERMISSION
     </select>
     
-    <select id="queryPermissionList" resultMap="PermissionMapper">
+    <select id="queryPermissionList" parameterType="com.codingfans.model.Permission" resultMap="PermissionMapper">
     	select <include refid="Base_Column_List" /> from TB_PERMISSION
-			
+		<where>
+    	1=1
+    		<if test="pmName != null and pmName != ''">
+    			and PM_NAME = #{pmName,jdbcType=VARCHAR}
+    		</if>
+    		<if test="pmType != null and pmType != ''">
+    			and PM_TYPE = #{pmType,jdbcType=CHAR}
+    		</if>
+    		<if test="parentId != null and parentId != ''">
+    			and PARENT_ID = #{parentId,jdbcType=CHAR}
+    		</if>
+    		<if test="isLeaf != null and isLeaf != ''">
+    			and IS_LEAF = #{isLeaf,jdbcType=CHAR}
+    		</if>
+    	</where>	
+   		order by WEIGHT
     </select>
     
 </mapper>

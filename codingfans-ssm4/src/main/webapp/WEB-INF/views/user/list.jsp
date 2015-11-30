@@ -1,14 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="../frame/tag.jsp"%>
 <html>
 <head>
 <title>用户管理</title>
-<!-- bootstrap table js -->
+<%@ include file="../frame/common.jsp" %>
 <script src="${ctx}/static/bootstrap/table/bootstrap-table.min.js" type="text/javascript" ></script>
 <script src="${ctx}/static/bootstrap/table/bootstrap-table-zh-CN.min.js" type="text/javascript" ></script>
 </head>
 	
-<body>
-	<div>
+<body class="white-bg">
+	<div height="100%">
 		<div id="toolbar">
 			<button id="b_add" class="btn btn-primary">
 	            <i class="glyphicon glyphicon-plus"></i>新增

@@ -22,21 +22,20 @@ import org.springframework.web.servlet.ModelAndView;
  * @version 0.1.0
  */
 @Controller
-@RequestMapping(value="/frame")
 public class FrameController {
     
-    @RequestMapping(value="/index.action")
+    @RequestMapping(value="/")
     public String index(){
         return "frame/login";
     }
     
-    @RequestMapping(value="/login",method=RequestMethod.POST)
+    @RequestMapping(value="/login.action")
     public ModelAndView login(String username,String password){
         ModelAndView mav = new ModelAndView("frame/login");
         
         //TODO 如果用户名、密码正确
         if("admin".equals(username) && "123456".equals(password)){
-            mav = new ModelAndView("user/list");
+            mav = new ModelAndView("frame/frame");
         }else{
             mav.addObject("flag", "false");
         }

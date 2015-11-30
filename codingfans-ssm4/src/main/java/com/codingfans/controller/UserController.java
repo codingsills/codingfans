@@ -9,6 +9,7 @@ package com.codingfans.controller;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,9 @@ public class UserController {
     @RequestMapping(value="/query.action")
     @ResponseBody
     public Object list(@ModelAttribute(value="user")UserVO userVo,@ModelAttribute(value="page")PageObject page){
+        if(StringUtils.isNoneBlank(userVo.getSearch())){
+            userVo.setUserName(userVo.getSearch().trim());
+        }
         PageObject pageObj = userService.getPageList(userVo, new PageBounds(page.getCPage(), page.getLimit()));
         return pageObj;
     }
