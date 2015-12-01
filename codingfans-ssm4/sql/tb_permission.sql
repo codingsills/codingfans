@@ -11,6 +11,8 @@ CREATE TABLE tb_permission
     rule VARCHAR(255) NOT NULL,	--权限规则（如：url、/user/*/*.jsp、规则等）
     pm_type CHARACTER(1) NOT NULL,	--权限类型（如：菜单、按钮、静态资源等）
     description VARCHAR(255),	--描述
+    WEIGHT BIGINT,
+    ICON VARCHAR(255),
     PRIMARY KEY (pm_id)
 );
     
