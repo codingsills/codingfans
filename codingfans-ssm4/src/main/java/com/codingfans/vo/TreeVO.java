@@ -10,6 +10,8 @@ package com.codingfans.vo;
 import java.io.Serializable;
 import java.util.List;
 
+import com.codingfans.model.Permission;
+
 /**
  * 类功能描述
  * TreeVO.java
@@ -25,6 +27,8 @@ public class TreeVO implements Serializable{
      * 
      */
     private static final long serialVersionUID = 322454594305510543L;
+    
+    private String id;
 
     private String text;
     
@@ -39,8 +43,34 @@ public class TreeVO implements Serializable{
     private String selectable;
     
     private List<TreeVO> nodes;
+    
+    private String href;
+    
+    public TreeVO(){
+        
+    }
+
+    public TreeVO(Permission per){
+        this.id = per.getPmId().trim();
+        this.href = per.getRule();
+        this.text = per.getPmName();
+        this.icon = per.getIcon();
+        this.color = "#000000";
+        this.backColor = "#FFFFFF";
+    }
+    
+    
+    public String getId() {
+    
+        return id;
+    }
 
     
+    public void setId(String id) {
+    
+        this.id = id;
+    }
+
     public String getText() {
     
         return text;
@@ -123,6 +153,19 @@ public class TreeVO implements Serializable{
     
         this.nodes = nodes;
     }
+
+    
+    public String getHref() {
+    
+        return href;
+    }
+
+    
+    public void setHref(String href) {
+    
+        this.href = href;
+    }
+
     
     
 

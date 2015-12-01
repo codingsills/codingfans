@@ -7,17 +7,23 @@
  */
 package com.codingfans.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.codingfans.model.Permission;
 import com.codingfans.service.PermissionService;
 import com.codingfans.utils.Menu.MenuType;
+import com.codingfans.vo.MenuVO;
+import com.codingfans.vo.TreeVO;
 
 /**
  * 类功能描述
@@ -44,19 +50,47 @@ public class MenuController {
         Permission permission = new Permission();
         permission.setPmType(MenuType.ISMENU.getType());
         List<Permission> list = pmService.queryPermissionList(permission);
-        if(list != null && !list.isEmpty()){
+        List<TreeVO> menuTree = initMenuJson(list);
+        
+        return menuTree;
+    }
+    
+    @RequestMapping(value="/menuView.action")
+    public String menuView(){
+        return "menu/menuView";
+    }
+    
+    @RequestMapping(value="/toAddView.action")
+    public ModelAndView toAddView(@RequestParam(name="parentId") String parentId){
+        ModelAndView mav = new ModelAndView("menu/addMenu");
+        mav.addObject("parentId", parentId);
+        
+        return mav;
+    }
+    
+    @RequestMapping(value="/addMenu.action")
+    public ModelAndView addMenu(@ModelAttribute(value="menuVO") MenuVO menuVO){
+        ModelAndView mav = new ModelAndView("menu/menuView");
+        //TODO 新增菜单
+        
+        return mav;
+    }
+    
+    private List<TreeVO> initMenuJson(List<Permission> list){
+        List<TreeVO> menuTree = new ArrayList<TreeVO>();
+        if(list != null && list.size() > 0){
             for(Permission pm : list){
-                permission.setParentId(pm.getPmId());
-                List<Permission> childList = pmService.queryPermissionList(permission);
+                TreeVO treeVO = new TreeVO(pm);
+                Permission permission1 = new Permission();
+                permission1.setPmType(MenuType.ISMENU.getType());
+                permission1.setParentId(pm.getPmId());
+                List<Permission> childList = pmService.queryPermissionList(permission1);
+                initMenuJson(childList);
+                menuTree.add(treeVO);
             }
         }
         
-        return list;
-    }
-    
-    @RequestMapping(value="menuView.action")
-    public String menuView(){
-        return "menu/menuView";
+        return menuTree;
     }
     
 }

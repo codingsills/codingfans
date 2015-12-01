@@ -3036,7 +3036,6 @@ a.forum-item-title:hover {
   top: 60px;
   width: 260px !important;
   z-index: 1009;
-  bottom: 0;
   right: -260px;
 }
 #right-sidebar.sidebar-open {
@@ -3149,7 +3148,7 @@ body.full-height-layout #page-wrapper {
   height: 100%;
 }
 #page-wrapper {
-  min-height: auto;
+  min-height: auto; 
 }
 body.boxed-layout {
   background: url('patterns/shattered.png');
@@ -4222,7 +4221,7 @@ body.modal-open {
 /* DASBOARD */
 .dashboard-header {
   border-top: 0;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 10px 10px 20px;
 }
 .dashboard-header h2 {
   margin-top: 10px;
