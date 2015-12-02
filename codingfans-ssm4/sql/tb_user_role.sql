@@ -6,6 +6,6 @@
 
 CREATE TABLE tb_user_role
 (
-	user_id CHARACTER(25) NOT NULL,	--用户ID
-    role_id CHARACTER(25) NOT NULL	--角色ID
+	USER_ID CHARACTER(25) NOT NULL,	--用户ID
+    ROLE_ID CHARACTER(25) NOT NULL	--角色ID
 );

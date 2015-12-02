@@ -90,7 +90,6 @@ public class TestUserService {
         pms.setPmType(MenuType.ISMENU.getType());
         pms.setRule("/");
         pms.setWeight(0);
-        pms.setIsLeaf(RLeaf.ROOT.getType());
         pms.setDescription("系统根节点");
         permissionService.insert(pms);
     }

@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="tag.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@ include file="common.jsp" %>
@@ -36,123 +35,18 @@
                             M+
                         </div>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">系统管理</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="${ctx}/user/list.action" target="iframe0">用户管理</a></li>
-                            <li><a href="${ctx}/menu/menuView.action" target="iframe0">菜单管理</a></li>
-                            <li><a href="dashboard_3.html">角色管理</a></li>
-                            <li><a href="dashboard_4_1.html">权限管理</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="graph_flot.html">Flot Charts</a></li>
-                            <li><a href="graph_morris.html">Morris.js Charts</a></li>
-                            <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
-                            <li><a href="graph_chartjs.html">Chart.js</a></li>
-                            <li><a href="graph_chartist.html">Chartist</a></li>
-                            <li><a href="graph_peity.html">Peity Charts</a></li>
-                            <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="mailbox.html">Inbox</a></li>
-                            <li><a href="mail_detail.html">Email view</a></li>
-                            <li><a href="mail_compose.html">Compose email</a></li>
-                            <li><a href="email_template.html">Email templates</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span> <span class="label label-primary pull-right">NEW</span> </a>
-                    </li>
-                    <li>
-                        <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="form_basic.html">Basic form</a></li>
-                            <li><a href="form_advanced.html">Advanced Plugins</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
-                            <li><a href="form_file_upload.html">File Upload</a></li>
-                            <li><a href="form_editors.html">Text Editor</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="projects.html">Projects</a></li>
-                            <li><a href="project_detail.html">Project detail</a></li>
-                            <li><a href="teams_board.html">Teams board</a></li>
-                            <li><a href="social_feed.html">Social feed</a></li>
-                            <li><a href="clients.html">Clients</a></li>
-                            <li><a href="full_height.html">Outlook view</a></li>
-                            <li><a href="file_manager.html">File manager</a></li>
-                            <li><a href="calendar.html">Calendar</a></li>
-                            <li><a href="issue_tracker.html">Issue tracker</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="article.html">Article</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="timeline.html">Timeline</a></li>
-                            <li><a href="pin_board.html">Pin board</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="search_results.html">Search results</a></li>
-                            <li><a href="lockscreen.html">Lockscreen</a></li>
-                            <li><a href="invoice.html">Invoice</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="login_two_columns.html">Login v.2</a></li>
-                            <li><a href="forgot_password.html">Forget password</a></li>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="404.html">404 Page</a></li>
-                            <li><a href="500.html">500 Page</a></li>
-                            <li><a href="empty_page.html">Empty page</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info pull-right">NEW</span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="toastr_notifications.html">Notification</a></li>
-                            <li><a href="nestable_list.html">Nestable list</a></li>
-                            <li><a href="agile_board.html">Agile board</a></li>
-                            <li><a href="timeline_2.html">Timeline v.2</a></li>
-                            <li><a href="diff.html">Diff</a></li>
-                            <li><a href="sweetalert.html">Sweet alert</a></li>
-                            <li><a href="idle_timer.html">Idle timer</a></li>
-                            <li><a href="spinners.html">Spinners</a></li>
-                            <li><a href="tinycon.html">Live favicon</a></li>
-                            <li><a href="google_maps.html">Google maps</a></li>
-                            <li><a href="code_editor.html">Code editor</a></li>
-                            <li><a href="modal_window.html">Modal window</a></li>
-                            <li><a href="forum_main.html">Forum view</a></li>
-                            <li><a href="validation.html">Validation</a></li>
-                            <li><a href="tree_view.html">Tree view</a></li>
-                            <li><a href="chat_view.html">Chat view</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="typography.html">Typography</a></li>
-                            <li><a href="icons.html">Icons</a></li>
-                            <li><a href="draggable_panels.html">Draggable Panels</a></li>
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="video.html">Video</a></li>
-                            <li><a href="tabs_panels.html">Panels</a></li>
-                            <li><a href="tabs.html">Tabs</a></li>
-                            <li><a href="notifications.html">Notifications & Tooltips</a></li>
-                            <li><a href="badges_labels.html">Badges, Labels, Progress</a></li>
-                        </ul>
-                    </li>
+                    <c:forEach var="menu" items="${menus[0].nodes}">
+                    	<li <c:if test="${menu.selectable == 'T'}">class="active"</c:if>>
+                    		<a href="#"><i class="${menu.icon}"></i> <span class="nav-label">${menu.text}</span> <span class="fa arrow"></span></a>
+                    		<c:if test="${menu.nodes != null}" >
+                    			<ul class="nav nav-second-level collapse">
+                    				<c:forEach var="child" items="${menu.nodes}">
+                    					<li <c:if test="${child.selectable == 'T'}">class="active"</c:if>><a href="${ctx}${child.href}" target="iframe0"><i class="${child.icon}"></i>&nbsp;${child.text}</a></li>
+                    				</c:forEach>
+                    			</ul>
+                    		</c:if>
+                    	
+                    </c:forEach>
                 </ul>
             </div>
         </nav>

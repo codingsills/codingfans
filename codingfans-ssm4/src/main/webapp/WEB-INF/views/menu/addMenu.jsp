@@ -7,8 +7,8 @@
 <title>新增菜单</title>
 </head>
 <body class="white-bg">
-	<form class="form-horizontal">
-		<div class="form-group">
+	<form class="form-horizontal" action="${ctx}/menu/addMenu.action" method="post">
+		<div class="form-group" hidden>
 	    <label for="menu_parentId" class="col-sm-2 control-label">父节点ID</label>
 	    <div class="col-sm-10">
 	      <input type="text" class="form-control" name="parentId" value="${parentId}" id="menu_parentId" placeholder="父节点ID">
@@ -41,7 +41,7 @@
 	  <div class="form-group">
 	    <label for="menu_desc" class="col-sm-2 control-label">描述</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" name="weight" id="menu_desc" placeholder="描述">
+	      <input type="text" class="form-control" name="description" id="menu_desc" placeholder="描述">
 	    </div>
 	  </div>
 	  <div class="form-group">

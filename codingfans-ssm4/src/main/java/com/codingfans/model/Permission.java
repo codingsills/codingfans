@@ -46,11 +46,6 @@ public class Permission implements Serializable {
     private String parentId;
     
     /**
-     * 是否叶子
-     */
-    private String isLeaf;
-    
-    /**
      * 权重
      */
     private Integer weight;
@@ -111,19 +106,6 @@ public class Permission implements Serializable {
     
         this.parentId = parentId;
     }
-
-    
-    public String getIsLeaf() {
-    
-        return isLeaf;
-    }
-
-    
-    public void setIsLeaf(String isLeaf) {
-    
-        this.isLeaf = isLeaf;
-    }
-
     
     public Integer getWeight() {
     

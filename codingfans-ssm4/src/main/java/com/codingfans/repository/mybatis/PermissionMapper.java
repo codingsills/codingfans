@@ -23,7 +23,7 @@ public interface PermissionMapper {
 	 * @param id
 	 * @return
 	 */
-	public Permission read(Integer id);
+	public Permission read(String id);
 
 	/**
 	 * 新增Permission

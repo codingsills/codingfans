@@ -7,8 +7,6 @@
  */
 package com.codingfans.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -21,9 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codingfans.model.Permission;
 import com.codingfans.service.PermissionService;
-import com.codingfans.utils.Menu.MenuType;
+import com.codingfans.utils.Menu;
 import com.codingfans.vo.MenuVO;
-import com.codingfans.vo.TreeVO;
 
 /**
  * 类功能描述
@@ -47,12 +44,7 @@ public class MenuController {
     @RequestMapping(value="/menuTree.action")
     @ResponseBody
     public Object showMenu(){
-        Permission permission = new Permission();
-        permission.setPmType(MenuType.ISMENU.getType());
-        List<Permission> list = pmService.queryPermissionList(permission);
-        List<TreeVO> menuTree = initMenuJson(list);
-        
-        return menuTree;
+        return  pmService.initMenu();
     }
     
     @RequestMapping(value="/menuView.action")
@@ -72,25 +64,29 @@ public class MenuController {
     public ModelAndView addMenu(@ModelAttribute(value="menuVO") MenuVO menuVO){
         ModelAndView mav = new ModelAndView("menu/menuView");
         //TODO 新增菜单
+        menuVO.setPmType(Menu.MenuType.ISMENU.getType());
+        pmService.insert(menuVO);
+        
         
         return mav;
     }
     
-    private List<TreeVO> initMenuJson(List<Permission> list){
-        List<TreeVO> menuTree = new ArrayList<TreeVO>();
-        if(list != null && list.size() > 0){
-            for(Permission pm : list){
-                TreeVO treeVO = new TreeVO(pm);
-                Permission permission1 = new Permission();
-                permission1.setPmType(MenuType.ISMENU.getType());
-                permission1.setParentId(pm.getPmId());
-                List<Permission> childList = pmService.queryPermissionList(permission1);
-                initMenuJson(childList);
-                menuTree.add(treeVO);
-            }
-        }
+    @RequestMapping(value="/toModifyView.action")
+    public ModelAndView toModifyView(@RequestParam(name="menuId") String menuId){
+        ModelAndView mav = new ModelAndView("menu/modifyMenu");
+        Permission pm = pmService.read(menuId);
+        mav.addObject("menu", pm);
         
-        return menuTree;
+        return mav;
     }
+    
+    @RequestMapping(value="/modifyMenu.action")
+    public ModelAndView modifyMenu(@ModelAttribute(value="menuVO") MenuVO menuVO){
+        ModelAndView mav = new ModelAndView("menu/menuView");
+        menuVO.setPmType(Menu.MenuType.ISMENU.getType());
+        pmService.update(menuVO);
+        return mav;
+    }
+    
     
 }

@@ -8,7 +8,6 @@
         <result column="PM_TYPE" property="pmType" jdbcType="CHAR" />
         <result column="RULE" property="rule" jdbcType="VARCHAR" />
         <result column="PARENT_ID" property="parentId" jdbcType="CHAR" />
-        <result column="IS_LEAF" property="isLeaf" jdbcType="CHAR" />
         <result column="WEIGHT" property="weight" jdbcType="BIGINT" />
         <result column="ICON" property="icon" jdbcType="VARCHAR" />
     </resultMap>
@@ -20,19 +19,18 @@
         PM_TYPE,
         RULE,
         PARENT_ID,
-        IS_LEAF,
         WEIGHT,
         ICON
     </sql>
     
-    <select id="read" resultMap="PermissionMapper" parameterType="java.lang.Integer" >
+    <select id="read" resultMap="PermissionMapper" parameterType="java.lang.String" >
         select 
         <include refid="Base_Column_List" />
         from TB_PERMISSION
-        where ID = #{id,jdbcType=INTEGER}
+        where PM_ID = #{id,jdbcType=CHAR}
     </select>
     
-    <insert id="insert" parameterType="com.codingfans.model.Permission" useGeneratedKeys="true" keyProperty="id" >
+    <insert id="insert" parameterType="com.codingfans.model.Permission" >
         <selectKey keyProperty="pmId" resultType="java.lang.String" order="BEFORE">
 			select nextval for PM_ID from sysibm.sysdummy1
 		</selectKey>
@@ -44,7 +42,6 @@
         #{pmType,jdbcType=CHAR},
         #{rule,jdbcType=VARCHAR},
         #{parentId,jdbcType=CHAR},
-        #{isLeaf,jdbcType=CHAR},
         #{weight,jdbcType=BIGINT},
         #{icon,jdbcType=VARCHAR}
         )
@@ -59,16 +56,15 @@
             PM_TYPE = #{pmType,jdbcType=CHAR},
             RULE = #{rule,jdbcType=VARCHAR},
             PARENT_ID = #{parentId,jdbcType=CHAR},
-        	IS_LEAF = #{isLeaf,jdbcType=CHAR},
         	WEIGHT = #{weight,jdbcType=BIGINT},
         	ICON = #{icon,jdbcType=VARCHAR}
         </set>
-        where ID = #{id,jdbcType=INTEGER}
+        where PM_ID = #{pmId,jdbcType=CHAR}
     </update>
     
-    <delete id="delete" parameterType="java.lang.Integer" >
+    <delete id="delete" parameterType="java.lang.String" >
         delete from TB_PERMISSION
-        where ID = #{id,jdbcType=INTEGER}
+        where PM_ID = #{id,jdbcType=CHAR}
     </delete>
     
     <select id="queryPermissionCount" resultType="java.lang.Integer">
@@ -87,9 +83,6 @@
     		</if>
     		<if test="parentId != null and parentId != ''">
     			and PARENT_ID = #{parentId,jdbcType=CHAR}
-    		</if>
-    		<if test="isLeaf != null and isLeaf != ''">
-    			and IS_LEAF = #{isLeaf,jdbcType=CHAR}
     		</if>
     	</where>	
    		order by WEIGHT

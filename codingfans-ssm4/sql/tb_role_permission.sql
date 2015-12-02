@@ -6,6 +6,6 @@
 
 CREATE TABLE tb_role_permission
 (
-    role_id CHARACTER(25) NOT NULL,	--角色ID
-    pm_id CHARACTER(25) NOT NULL	--权限ID
+    ROLE_ID CHARACTER(25) NOT NULL,	--角色ID
+    PM_ID CHARACTER(25) NOT NULL	--权限ID
 );

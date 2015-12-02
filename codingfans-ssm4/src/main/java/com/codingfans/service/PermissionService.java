@@ -2,6 +2,7 @@ package com.codingfans.service;
 
 import java.util.List;
 import com.codingfans.model.Permission;
+import com.codingfans.vo.TreeVO;
 
 /**
  * 
@@ -20,7 +21,7 @@ public interface PermissionService{
 	 * @param id
 	 * @return
 	 */
-	public Permission read(Integer id);
+	public Permission read(String id);
 
 	/**
 	 * 新增Permission
@@ -58,5 +59,7 @@ public interface PermissionService{
 	 * @return
 	 */
 	public List<Permission> queryPermissionList(Permission permission);
+	
+	public List<TreeVO> initMenu();
 
 }
