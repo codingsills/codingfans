@@ -35,6 +35,7 @@
                             M+
                         </div>
                     </li>
+                    <!-- 菜单树 -->
                     <c:forEach var="menu" items="${menus[0].nodes}">
                     	<li <c:if test="${menu.selectable == 'T'}">class="active"</c:if>>
                     		<a href="#"><i class="${menu.icon}"></i> <span class="nav-label">${menu.text}</span> <span class="fa arrow"></span></a>
@@ -72,7 +73,7 @@
 		        </nav>
 	        </div>
 	        <div class="row border-bottom white-bg dashboard-header">
-	        	<iframe id="main_frame" name="iframe0" width="100%" src="${ctx}/user/list.action" frameborder="0" seamless></iframe>
+	        	<iframe id="main_frame" name="iframe0" width="100%" height="100%" src="${ctx}/user/list.action" frameborder="0" seamless></iframe>
 	        </div>
            <div class="footer">
                <div class="pull-right">

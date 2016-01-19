@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.codingfans.model.User;
 import com.codingfans.service.PermissionService;
+import com.codingfans.service.UserService;
 import com.codingfans.vo.TreeVO;
 
 /**
@@ -34,6 +36,9 @@ public class FrameController {
     @Resource
     private PermissionService pmService;
     
+    @Resource
+    private UserService userService;
+    
     @RequestMapping(value="/")
     public String index(){
         return "frame/login";
@@ -43,16 +48,15 @@ public class FrameController {
     public ModelAndView login(String username,String password){
         ModelAndView mav = new ModelAndView("frame/login");
         
-        //TODO 如果用户名、密码正确
-        if("admin".equals(username) && "123456".equals(password)){
+        User user = userService.queryByUserName(username);
+        if(user != null && user.getPassword().trim().equals(password.trim())){
             mav = new ModelAndView("frame/frame");
-            //菜单数据
             List<TreeVO> menuTree = pmService.initMenu();
 //            menuTree.get(0).getNodes().get(0).setSelectable("T");
 //            menuTree.get(0).getNodes().get(0).getNodes().get(0).setSelectable("T");
             mav.addObject("menus", menuTree);
         }else{
-            mav.addObject("flag", "false");
+            mav.addObject("flag","false");
         }
         
         return mav;

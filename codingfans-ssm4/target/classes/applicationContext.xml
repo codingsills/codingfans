@@ -58,7 +58,7 @@
 	<beans profile="dev">
 		<context:property-placeholder ignore-resource-not-found="true"
 			 location="classpath*:/application.properties,
-			 		   classpath*:/application.dev.properties" />
+			 		   classpath*:/application-dev.properties" />
 		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 			<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
 			<property name="driverClassName" value="${jdbc.driver}" />
@@ -90,10 +90,10 @@
 	</beans>
 	
 	<!-- production 环境 -->
-	<beans profile="production">
+	<beans profile="pro">
 		<context:property-placeholder ignore-resource-not-found="true"
 			 location="classpath*:/application.properties,
-			 		   classpath*:/application.dev.properties" />
+			 		   classpath*:/application-pro.properties" />
 		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 			<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
 			<property name="driverClassName" value="${jdbc.driver}" />

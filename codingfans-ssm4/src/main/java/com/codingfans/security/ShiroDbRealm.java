@@ -15,19 +15,21 @@ import javax.annotation.PostConstruct;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.codec.Hex;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
+import com.codingfans.consts.UserConsts;
 import com.codingfans.model.User;
 import com.codingfans.service.UserService;
 import com.codingfans.service.impl.UserServiceImpl;
+import com.codingfans.utils.Encodes;
 
 
 /**
@@ -68,7 +70,10 @@ public class ShiroDbRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         User user = userService.queryByUserName(token.getUsername());
         if(user != null){
-            byte[] salt = Hex.decode(user.getSalt().getBytes());
+            if(UserConsts.INVALID.equals(user.getStatus())){
+                throw new DisabledAccountException();
+            }
+            byte[] salt = Encodes.decodeHex(user.getSalt());
             return new SimpleAuthenticationInfo(
                     new ShiroUser(user.getUserId(), user.getUserName(), user.getRealName()),
                     user.getPassword(),ByteSource.Util.bytes(salt),getName());

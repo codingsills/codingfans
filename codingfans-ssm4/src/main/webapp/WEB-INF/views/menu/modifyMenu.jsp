@@ -52,9 +52,22 @@
 	  </div>
 	  <div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
-	      <button type="submit" class="btn btn-default">修改</button>
+	      <button type="submit" class="btn btn-primary">修改</button>
+	      <button id="toBack" type="button" class="btn btn-default">返回</button>
 	    </div>
 	  </div>
 	</form>
+	
+<script type="text/javascript">
+	function toBack(){
+		$('#toBack').on('click',function(){
+			window.location.href='${ctx}/menu/menuView.action';
+		});
+	}
+	
+	$(function(){
+		toBack();
+	});
+</script>	
 </body>
 </html>

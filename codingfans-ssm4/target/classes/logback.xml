@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
-	<property name="LOG_HOME" value="/codingfans/ssm4/logs" />
+	<property name="LOG_HOME" value="/logs/ssm4" />
 	<!-- 控制台输出 -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- 典型的日志pattern -->
@@ -30,7 +30,7 @@
 	</appender>
 
 	<!-- root -->
-	<root level="WARN">
+	<root level="DEBUG">
 		<appender-ref ref="console" />
 		<appender-ref ref="defaultlogFile" />
 	</root>

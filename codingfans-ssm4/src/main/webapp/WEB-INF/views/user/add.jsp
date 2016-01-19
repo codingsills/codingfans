@@ -58,7 +58,7 @@
 	</div>
 	<script type="text/javascript">
 		function initBtn(){
-			$('#toBack').unbind().bind('click',function(){
+			$('#toBack').on('click',function(){
 				window.location.href='${ctx}/user/list.action';
 			});
 		}

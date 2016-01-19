@@ -14,10 +14,10 @@
 		</param-value>
 	</context-param>
 	
-	<!-- 设定Spring Context的默认Profile -->
+	<!-- 设定Spring Context的默认Profile,针对不同的环境指定对应的profile(dev:开发环境(development)，pro:生成环境(production)，test:测试环境) -->
 	<context-param>
     	<param-name>spring.profiles.default</param-name>
-    	<param-value>production</param-value>
+    	<param-value>pro</param-value>
 	</context-param>
 
 	<listener>

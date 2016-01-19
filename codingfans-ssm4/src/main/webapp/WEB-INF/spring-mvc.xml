@@ -23,6 +23,13 @@
             </bean>
   		</mvc:message-converters>
 	</mvc:annotation-driven>
+	
+	<mvc:interceptors>
+		<bean class="com.codingfans.interceptor.PrintParamsInterceptor"></bean>
+		<!-- <mvc:interceptor>
+			<mvc:exclude-mapping path="login.action"/>
+		</mvc:interceptor> -->
+	</mvc:interceptors>
 
 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 	    <property name="ignoreAcceptHeader" value="true" />
